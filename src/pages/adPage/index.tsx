@@ -1,4 +1,4 @@
-import { Message, Phone } from '@mui/icons-material';
+import { ImageNotSupported, Message, Phone } from '@mui/icons-material';
 import { Box, Divider, Paper, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -7,8 +7,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { mockAdverts } from '../../shared/lib/mockAdverts';
 import { Button } from '../../shared/ui';
-
-const placeholderImg = 'https://via.placeholder.com/400x200?text=Нет+фото';
 
 export default function AdPage() {
   const { id } = useParams();
@@ -77,15 +75,20 @@ export default function AdPage() {
             />
           ) : (
             <Box
-              component="img"
-              src={placeholderImg}
-              alt="Нет фото"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              flexDirection="column"
               sx={{
                 width: '100%',
                 height: 200,
-                objectFit: 'cover',
+                backgroundColor: '#e0e0e0',
+                color: '#777',
               }}
-            />
+            >
+              <ImageNotSupported sx={{ fontSize: 48, mb: 1 }} />
+              <Typography variant="body2">Нет фото</Typography>
+            </Box>
           )}
         </Box>
 

@@ -1,3 +1,4 @@
+import { ImageNotSupported } from '@mui/icons-material';
 import { Box, Paper, Stack, Typography } from '@mui/material';
 
 export interface AdCardProps {
@@ -30,20 +31,24 @@ export const AdCard = ({ image, title, price, description, city, date, onClick }
         sx={{
           width: '100%',
           height: 200,
-          objectFit: 'cover',
         }}
       />
     ) : (
       <Box
-        component="img"
-        src="https://via.placeholder.com/400x200?text=Нет+фото"
-        alt="Нет фото"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="column"
         sx={{
           width: '100%',
           height: 200,
-          objectFit: 'cover',
+          backgroundColor: '#e0e0e0',
+          color: '#777',
         }}
-      />
+      >
+        <ImageNotSupported sx={{ fontSize: 48, mb: 1 }} />
+        <Typography variant="body2">Нет фото</Typography>
+      </Box>
     )}
     <Stack
       sx={{
