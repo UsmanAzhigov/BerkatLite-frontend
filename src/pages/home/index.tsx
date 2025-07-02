@@ -56,8 +56,8 @@ export default function HomePage() {
           justifyContent="space-between"
           gap={2}
         >
-          <Button endIcon={<SwapVert />}> Фильтры</Button>
-          <Button endIcon={<Tune />}>Сортировка</Button>
+          <Button endIcon={<Tune />}> Фильтры</Button>
+          <Button endIcon={<SwapVert />}>Сортировка</Button>
         </Stack>
       </Stack>
       <ListAd data={mockAdverts} />

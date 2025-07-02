@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Paper, Stack, Typography } from '@mui/material';
 
 export interface AdCardProps {
   image?: string[];
@@ -22,12 +22,11 @@ export const AdCard = ({
   <Paper
     sx={{
       width: '100%',
-      p: 2,
-      borderRadius: 2,
-      boxShadow: 2,
+      borderRadius: '15px',
       position: 'relative',
       cursor: onClick ? 'pointer' : 'default',
       overflow: 'hidden',
+      boxShadow: '0px 1px 4px 4px rgba(0,0,0,0.1)',
     }}
     onClick={onClick}
   >
@@ -38,47 +37,45 @@ export const AdCard = ({
         alt={title}
         sx={{
           width: '100%',
-          height: 180,
+          height: 200,
           objectFit: 'cover',
-          borderRadius: 2,
-          mb: 1.5,
         }}
       />
     )}
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="space-between"
-      mb={0.5}
+    <Stack
+      sx={{
+        p: '0px  17px 17px 17px',
+      }}
     >
-      <Typography variant="h6" fontWeight={600} noWrap>
-        {title}
-      </Typography>
-      {price && (
-        <Typography variant="h6" color="primary" fontWeight={700} ml={2}>
-          {price} ₽
+      <Box display="flex" flexDirection="column" mb={1}>
+        <Typography fontSize={20} fontWeight={700} noWrap>
+          {title}
         </Typography>
-      )}
-    </Box>
-    <Typography variant="body2" color="text.secondary" mb={2}>
-      {description}
-    </Typography>
-    <Box
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      position="absolute"
-      left={0}
-      right={0}
-      bottom={8}
-      px={2}
-    >
-      <Typography variant="caption" color="text.secondary">
-        {city}
+        {price && (
+          <Typography fontSize={16} fontWeight={600}>
+            {price} ₽
+          </Typography>
+        )}
+      </Box>
+      <Typography fontSize={12} color="text.secondary" mb={5}>
+        {description}
       </Typography>
-      <Typography variant="caption" color="text.secondary">
-        {date}
-      </Typography>
-    </Box>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        position="absolute"
+        left={17}
+        right={17}
+        bottom={10}
+      >
+        <Typography fontSize={12} color="text.secondary">
+          {city}
+        </Typography>
+        <Typography fontSize={12} color="text.secondary">
+          {date}
+        </Typography>
+      </Box>
+    </Stack>
   </Paper>
 );

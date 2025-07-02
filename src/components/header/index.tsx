@@ -5,16 +5,15 @@ import logo from '../../assets/logo.svg';
 import styles from './index.module.scss';
 export const Header = () => {
   const navigate = useNavigate();
+  const onBack = () => {
+    navigate('/');
+    window.scrollTo(0, 0);
+  };
 
   return (
-    <AppBar position="static" className={styles.header}>
+    <AppBar position="sticky" className={styles.header}>
       <Toolbar className={styles.toolbar}>
-        <Stack
-          direction="row"
-          alignItems="center"
-          gap={1}
-          onClick={() => navigate('/')}
-        >
+        <Stack direction="row" alignItems="center" gap={1} onClick={onBack}>
           <img
             src={logo}
             alt="logo"
