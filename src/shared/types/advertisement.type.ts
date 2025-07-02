@@ -4,6 +4,7 @@ export interface Property {
 }
 
 export interface Advert {
+  id: string;
   title: string;
   description: string;
   phone: string[];

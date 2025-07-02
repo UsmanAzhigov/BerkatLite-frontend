@@ -3,22 +3,14 @@ import { Box, Paper, Stack, Typography } from '@mui/material';
 export interface AdCardProps {
   image?: string[];
   title: string;
-  price?: string | number;
+  price?: number;
   description: string;
   city: string;
   date: string;
   onClick?: () => void;
 }
 
-export const AdCard = ({
-  image,
-  title,
-  price,
-  description,
-  city,
-  date,
-  onClick,
-}: AdCardProps) => (
+export const AdCard = ({ image, title, price, description, city, date, onClick }: AdCardProps) => (
   <Paper
     sx={{
       width: '100%',
@@ -30,11 +22,22 @@ export const AdCard = ({
     }}
     onClick={onClick}
   >
-    {image && (
+    {image && image.length > 0 ? (
       <Box
         component="img"
-        src={image && image[0]}
+        src={image[0]}
         alt={title}
+        sx={{
+          width: '100%',
+          height: 200,
+          objectFit: 'cover',
+        }}
+      />
+    ) : (
+      <Box
+        component="img"
+        src="https://via.placeholder.com/400x200?text=Нет+фото"
+        alt="Нет фото"
         sx={{
           width: '100%',
           height: 200,

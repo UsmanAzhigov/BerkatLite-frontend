@@ -13,12 +13,12 @@ export const ListAd: FC<ListAdType> = ({ data }) => {
 
   return (
     <List>
-      {data?.map((ad, idx) => (
+      {data?.map((ad) => (
         <ListItem
-          key={ad.title + idx}
+          key={ad.id}
           disablePadding
           sx={{ mb: 2, cursor: 'pointer' }}
-          onClick={() => navigate(`/ad/${idx}`)}
+          onClick={() => navigate(`/ad/${ad.id}`)}
         >
           <AdCard
             image={ad.image}

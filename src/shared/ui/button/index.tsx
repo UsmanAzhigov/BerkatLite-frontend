@@ -7,7 +7,7 @@ export interface ButtonProps extends MuiButtonProps {
 }
 
 export const Button = (props: ButtonProps) => {
-  const { children, sx, ...rest } = props;
+  const { children, sx, fullWidth, ...rest } = props;
   const defaultSx = {
     borderRadius: '10px',
     backgroundColor: '#007BFF',
@@ -18,13 +18,9 @@ export const Button = (props: ButtonProps) => {
     fontSize: '14px',
     fontWeight: '500',
   };
-  const mergedSx = Array.isArray(sx)
-    ? [defaultSx, ...sx]
-    : sx
-    ? [defaultSx, sx]
-    : defaultSx;
+  const mergedSx = Array.isArray(sx) ? [defaultSx, ...sx] : sx ? [defaultSx, sx] : defaultSx;
   return (
-    <MuiButton fullWidth sx={mergedSx} {...rest}>
+    <MuiButton fullWidth={fullWidth ?? true} sx={mergedSx} {...rest}>
       {children}
     </MuiButton>
   );

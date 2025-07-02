@@ -13,7 +13,7 @@ export const InputSearch: React.FC<React.ComponentProps<typeof TextField>> = (
       variant={props.variant || VarianSearch['OUTLINED']}
       size={props.size || SizeSearch['SMALL']}
       placeholder={props.placeholder || 'Поиск...'}
-      fullWidth={props.fullWidth || true}
+      fullWidth={props.fullWidth ?? true}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">

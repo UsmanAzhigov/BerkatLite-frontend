@@ -2,48 +2,18 @@ import { Message, Phone } from '@mui/icons-material';
 import { Box, Divider, Paper, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import type { Advert } from '../../shared/types';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import { mockAdverts } from '../../shared/lib/mockAdverts';
 import { Button } from '../../shared/ui';
 
-const mockAdverts: Advert[] = [
-  {
-    title: 'Продам велосипед',
-    description: 'Горный велосипед, почти новый',
-    phone: ['+7 928 091 6480'],
-    city: 'Грозный',
-    price: 15000,
-    image: [
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
-      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80',
-      'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80',
-    ],
-    date: '12.06.2024',
-    properties: [
-      { key: 'Состояние', value: 'Отличное' },
-      { key: 'Цвет', value: 'Синий' },
-    ],
-  },
-  {
-    title: 'Сдам квартиру',
-    description: '2-комнатная, центр города',
-    phone: ['+7 938 007 4271'],
-    city: 'Аргун',
-    price: 20000,
-    image: [
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
-    ],
-    date: '12.06.2024',
-    properties: [
-      { key: 'Этаж', value: '3' },
-      { key: 'Площадь', value: '60м2' },
-    ],
-  },
-];
+const placeholderImg = 'https://via.placeholder.com/400x200?text=Нет+фото';
 
 export default function AdPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const advert = mockAdverts[Number(id)];
+  const advert = mockAdverts.find((ad) => ad.id === id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -51,14 +21,18 @@ export default function AdPage() {
 
   if (!advert) return <Typography>Объявление не найдено</Typography>;
 
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
   return (
     <>
-      <Button
-        fullWidth={false}
-        onClick={() => navigate(-1)}
-        variant="outlined"
-        sx={{ mb: 2 }}
-      >
+      <Button fullWidth={false} onClick={() => navigate(-1)} variant="outlined" sx={{ mb: 2 }}>
         ← Назад
       </Button>
 
@@ -73,18 +47,47 @@ export default function AdPage() {
           flexDirection: 'column',
         }}
       >
-        {advert.image && (
-          <Box
-            component="img"
-            src={advert.image[0]}
-            alt={advert.title}
-            sx={{
-              width: '100%',
-              height: 200,
-              objectFit: 'cover',
-            }}
-          />
-        )}
+        <Box>
+          {advert.image && advert.image.length > 1 ? (
+            <Slider {...sliderSettings}>
+              {advert.image.map((img, idx) => (
+                <Box
+                  key={img + idx}
+                  component="img"
+                  src={img}
+                  alt={advert.title}
+                  sx={{
+                    width: '100%',
+                    height: 200,
+                    objectFit: 'cover',
+                  }}
+                />
+              ))}
+            </Slider>
+          ) : advert.image && advert.image.length === 1 ? (
+            <Box
+              component="img"
+              src={advert.image[0]}
+              alt={advert.title}
+              sx={{
+                width: '100%',
+                height: 200,
+                objectFit: 'cover',
+              }}
+            />
+          ) : (
+            <Box
+              component="img"
+              src={placeholderImg}
+              alt="Нет фото"
+              sx={{
+                width: '100%',
+                height: 200,
+                objectFit: 'cover',
+              }}
+            />
+          )}
+        </Box>
 
         <Box sx={{ p: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
           <Box>
@@ -101,28 +104,18 @@ export default function AdPage() {
                 startIcon={<Message />}
                 sx={{ backgroundColor: '#25D366' }}
                 onClick={() =>
-                  window.open(
-                    `https://wa.me/${advert.phone[0].replace(/\D/g, '')}`,
-                    '_blank',
-                  )
+                  window.open(`https://wa.me/${advert.phone[0].replace(/\D/g, '')}`, '_blank')
                 }
               >
                 Написать
               </Button>
-              <Button
-                startIcon={<Phone />}
-                onClick={() => window.open(`tel:${advert.phone[0]}`)}
-              >
+              <Button startIcon={<Phone />} onClick={() => window.open(`tel:${advert.phone[0]}`)}>
                 Позвонить
               </Button>
             </Box>
           </Box>
 
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-          >
+          <Box display="flex" justifyContent="space-between" alignItems="center">
             <Typography fontSize={13} color="text.secondary" fontWeight={500}>
               {advert.city}
             </Typography>
@@ -131,29 +124,16 @@ export default function AdPage() {
             </Typography>
           </Box>
           <Divider />
-          <Box
-            display="flex"
-            flexDirection={{ xs: 'column', md: 'row' }}
-            gap={3}
-          >
+          <Box display="flex" flexDirection={{ xs: 'column', md: 'row' }} gap={3}>
             <Box flex={1}>
               <Typography fontSize={15} color="text.primary">
                 {advert.description}
               </Typography>
             </Box>
-            <Box
-              bgcolor="grey.300"
-              width="1px"
-              display={{ xs: 'none', md: 'block' }}
-            />
+            <Box bgcolor="grey.300" width="1px" display={{ xs: 'none', md: 'block' }} />
             <Box flex={1}>
               {advert.properties.map((prop, idx) => (
-                <Typography
-                  key={idx}
-                  fontSize={15}
-                  color="text.secondary"
-                  mb={0.5}
-                >
+                <Typography key={idx} fontSize={15} color="text.secondary" mb={0.5}>
                   <strong>{prop.key}:</strong> {prop.value}
                 </Typography>
               ))}
