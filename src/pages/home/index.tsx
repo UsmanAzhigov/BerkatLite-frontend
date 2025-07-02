@@ -30,8 +30,12 @@ export default function HomePage() {
           onChange={(e) => setSearch(e.target.value)}
         />
         <Stack flexDirection="row" alignItems="center" justifyContent="space-between" gap={2}>
-          <Button endIcon={<Tune />}> Фильтры</Button>
+          <Button fullWidth endIcon={<Tune />}>
+            {' '}
+            Фильтры
+          </Button>
           <Button
+            fullWidth
             endIcon={
               <SwapVert
                 sx={{
