@@ -8,6 +8,10 @@ const mockAdverts: Advert[] = [
     description: 'Горный велосипед, почти новый',
     phone: ['+79991234567'],
     city: 'Грозный',
+    image: [
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
+    ],
+    date: '12.06.2024',
     properties: [
       { key: 'Состояние', value: 'Отличное' },
       { key: 'Цвет', value: 'Синий' },
@@ -18,6 +22,10 @@ const mockAdverts: Advert[] = [
     description: '2-комнатная, центр города',
     phone: ['+79997654321'],
     city: 'Аргун',
+    image: [
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
+    ],
+    date: '12.06.2024',
     properties: [
       { key: 'Этаж', value: '3' },
       { key: 'Площадь', value: '60м2' },

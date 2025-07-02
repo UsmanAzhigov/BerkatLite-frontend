@@ -8,5 +8,8 @@ export interface Advert {
   description: string;
   phone: string[];
   city: string;
+  image: string[];
+  date: string;
+  price: number;
   properties: Array<Property>;
 }

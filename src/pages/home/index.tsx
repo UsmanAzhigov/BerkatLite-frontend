@@ -1,18 +1,9 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  List,
-  ListItem,
-  MenuItem,
-  Paper,
-  Select,
-  Typography,
-} from '@mui/material';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { SwapVert, Tune } from '@mui/icons-material';
+import { Stack } from '@mui/material';
 import type { Advert } from '../../shared/types';
+import { Button, InputSearch } from '../../shared/ui';
+import { SizeSearch, VarianSearch } from '../../shared/ui/inputSearch/type';
+import { ListAd } from '../../widgets';
 
 const mockAdverts: Advert[] = [
   {
@@ -20,6 +11,13 @@ const mockAdverts: Advert[] = [
     description: 'Горный велосипед, почти новый',
     phone: ['+79991234567'],
     city: 'Грозный',
+    image: [
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
+      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80',
+      'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80',
+    ],
+    date: '12.06.2024',
+    price: 25000,
     properties: [
       { key: 'Состояние', value: 'Отличное' },
       { key: 'Цвет', value: 'Синий' },
@@ -30,6 +28,11 @@ const mockAdverts: Advert[] = [
     description: '2-комнатная, центр города',
     phone: ['+79997654321'],
     city: 'Аргун',
+    price: 25000,
+    image: [
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
+    ],
+    date: '12.06.2024',
     properties: [
       { key: 'Этаж', value: '3' },
       { key: 'Площадь', value: '60м2' },
@@ -37,69 +40,27 @@ const mockAdverts: Advert[] = [
   },
 ];
 
-const cities = Array.from(new Set(mockAdverts.map((a) => a.city)));
-
 export default function HomePage() {
-  const [city, setCity] = useState('');
-  const [sort, setSort] = useState<'asc' | 'desc'>('asc');
-  const navigate = useNavigate();
-
-  const filtered = mockAdverts
-    .filter((a) => !city || a.city === city)
-    .sort((a, b) =>
-      sort === 'asc'
-        ? a.title.localeCompare(b.title)
-        : b.title.localeCompare(a.title),
-    );
-
   return (
-    <>
-      <Typography variant="h4" component="h2" sx={{ mb: 2 }}>
-        Объявления
-      </Typography>
-      <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
-        <FormControl fullWidth size="small">
-          <InputLabel>Город</InputLabel>
-          <Select
-            value={city}
-            label="Город"
-            onChange={(e) => setCity(e.target.value)}
-          >
-            <MenuItem value="">Все города</MenuItem>
-            {cities.map((c) => (
-              <MenuItem key={c} value={c}>
-                {c}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <Button
-          variant="outlined"
-          onClick={() => setSort((s) => (s === 'asc' ? 'desc' : 'asc'))}
+    <Stack flexDirection="column" gap={1}>
+      <Stack flexDirection="column" gap={1}>
+        <InputSearch
+          placeholder="Введите товар..."
+          type="search"
+          size={SizeSearch['SMALL']}
+          variant={VarianSearch['OUTLINED']}
+        />
+        <Stack
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+          gap={2}
         >
-          {sort === 'asc' ? 'А-Я' : 'Я-А'}
-        </Button>
-      </Box>
-      <List sx={{ p: 0 }}>
-        {filtered.map((ad, idx) => (
-          <ListItem
-            key={ad.title + idx}
-            disablePadding
-            sx={{ mb: 2, cursor: 'pointer' }}
-            onClick={() => navigate(`/ad/${idx}`)}
-          >
-            <Paper sx={{ width: '100%', p: 2, borderRadius: 2, boxShadow: 2 }}>
-              <Typography variant="h6">{ad.title}</Typography>
-              <Typography variant="body2" color="text.secondary">
-                {ad.city}
-              </Typography>
-              <Typography variant="body1" sx={{ mt: 1 }}>
-                {ad.description}
-              </Typography>
-            </Paper>
-          </ListItem>
-        ))}
-      </List>
-    </>
+          <Button endIcon={<SwapVert />}> Фильтры</Button>
+          <Button endIcon={<Tune />}>Сортировка</Button>
+        </Stack>
+      </Stack>
+      <ListAd data={mockAdverts} />
+    </Stack>
   );
 }
