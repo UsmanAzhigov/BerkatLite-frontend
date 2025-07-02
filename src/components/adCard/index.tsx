@@ -15,7 +15,7 @@ export interface AdCardProps {
 export const AdCard = ({ image, title, price, description, city, date, onClick }: AdCardProps) => (
   <Paper
     component={motion.div}
-    whileHover={{ scale: 1.03, boxShadow: '0px 4px 16px 4px rgba(0,0,0,0.13)' }}
+    whileHover={{ scale: 1.005, boxShadow: '0px 4px 16px 4px rgba(0,0,0,0.13)' }}
     transition={{ type: 'spring', stiffness: 200, damping: 15 }}
     sx={{
       width: '100%',
@@ -64,7 +64,7 @@ export const AdCard = ({ image, title, price, description, city, date, onClick }
           {title}
         </Typography>
         {price && (
-          <Typography fontSize={16} fontWeight={600}>
+          <Typography fontSize={16} fontWeight={600} color="primary">
             {price} ₽
           </Typography>
         )}
