@@ -5,13 +5,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import { mockAdverts } from '../../shared/lib/mockAdverts';
 import { Button } from '../../shared/ui';
+import { useProduct } from '../../shared/hooks/product';
+import { formattedDate } from '../../shared/lib/formattedDate';
 
 export default function AdPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const advert = mockAdverts.find((ad) => ad.id === id);
+  const { advert } = useProduct(id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -46,9 +47,9 @@ export default function AdPage() {
         }}
       >
         <Box>
-          {advert.image && advert.image.length > 1 ? (
+          {advert.images && advert.images.length > 1 ? (
             <Slider {...sliderSettings}>
-              {advert.image.map((img, idx) => (
+              {advert.images.map((img: string, idx: number) => (
                 <Box
                   key={img + idx}
                   component="img"
@@ -62,10 +63,10 @@ export default function AdPage() {
                 />
               ))}
             </Slider>
-          ) : advert.image && advert.image.length === 1 ? (
+          ) : advert.images && advert.images.length === 1 ? (
             <Box
               component="img"
-              src={advert.image[0]}
+              src={advert.images[0]}
               alt={advert.title}
               sx={{
                 width: '100%',
@@ -123,7 +124,7 @@ export default function AdPage() {
               {advert.city}
             </Typography>
             <Typography fontSize={13} color="text.secondary" fontWeight={500}>
-              {advert.date}
+              {formattedDate(advert.createdAt)}
             </Typography>
           </Box>
           <Divider />
@@ -135,9 +136,9 @@ export default function AdPage() {
             </Box>
             <Box bgcolor="grey.300" width="1px" display={{ xs: 'none', md: 'block' }} />
             <Box flex={1}>
-              {advert.properties.map((prop, idx) => (
+              {advert.properties.map((prop: { name: string; text: string }, idx: number) => (
                 <Typography key={idx} fontSize={15} color="text.secondary" mb={0.5}>
-                  <strong>{prop.key}:</strong> {prop.value}
+                  <strong>{prop.name}:</strong> {prop.text}
                 </Typography>
               ))}
             </Box>

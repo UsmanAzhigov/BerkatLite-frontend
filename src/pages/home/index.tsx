@@ -1,22 +1,17 @@
 import { SwapVert, Tune } from '@mui/icons-material';
 import { Stack } from '@mui/material';
 import { useState } from 'react';
-import { mockAdverts } from '../../shared/lib/mockAdverts';
+
 import { Button, InputSearch } from '../../shared/ui';
 import { SizeSearch, VarianSearch } from '../../shared/ui/inputSearch/type';
 import { ListAd } from '../../widgets';
+import { useAllProducts } from '../../shared/hooks/allProducts';
 
 export default function HomePage() {
   const [search, setSearch] = useState('');
   const [sortAsc, setSortAsc] = useState(true);
 
-  const filteredAdverts = mockAdverts
-    .filter(
-      (ad) =>
-        ad.title.toLowerCase().includes(search.toLowerCase()) ||
-        ad.description.toLowerCase().includes(search.toLowerCase()),
-    )
-    .sort((a, b) => (sortAsc ? a.price - b.price : b.price - a.price));
+  const { items } = useAllProducts();
 
   return (
     <Stack flexDirection="column" gap={1}>
@@ -50,7 +45,7 @@ export default function HomePage() {
           </Button>
         </Stack>
       </Stack>
-      <ListAd data={filteredAdverts} />
+      <ListAd data={items} />
     </Stack>
   );
 }

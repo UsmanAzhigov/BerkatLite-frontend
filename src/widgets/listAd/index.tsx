@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AdCard } from '../../components/adCard';
 import type { Advert } from '../../shared/types';
+import { formattedDate } from '../../shared/lib/formattedDate';
 
 interface ListAdType {
   data: Advert[];
@@ -28,12 +29,12 @@ export const ListAd: FC<ListAdType> = ({ data }) => {
             transition={{ duration: 0.4, type: 'spring', stiffness: 60 }}
           >
             <AdCard
-              image={ad.image}
+              image={ad.images}
               title={ad.title}
               price={ad.price}
               description={ad.description}
               city={ad.city}
-              date={ad.date}
+              date={formattedDate(ad.createdAt)}
             />
           </ListItem>
         ))}

@@ -1,16 +1,18 @@
 export interface Property {
-  key: string;
-  value: string;
+  name: string;
+  text: string;
 }
 
 export interface Advert {
   id: string;
   title: string;
   description: string;
-  phone: string[];
-  city: string;
-  image: string[];
-  date: string;
   price: number;
+  images: string[];
+  category: string;
+  popular: number;
+  city: string;
+  phone: string[];
   properties: Array<Property>;
+  createdAt: string;
 }
