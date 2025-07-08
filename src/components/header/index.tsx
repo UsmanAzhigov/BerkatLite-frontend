@@ -18,9 +18,6 @@ export const Header = () => {
           <img src={logo} alt="logo" className={styles.logo} width={40} height={40} />
           <Typography className={styles.title}>BerkatLite</Typography>
         </Stack>
-        <IconButton>
-          <MenuIcon sx={{ color: '#000000' }} />
-        </IconButton>
       </Toolbar>
     </AppBar>
   );
