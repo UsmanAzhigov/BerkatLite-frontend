@@ -1,9 +1,9 @@
 import React from 'react';
 import { axiosInstance } from '../lib/axios';
-import type { Advert } from '../types';
+import type { AdvertItems } from '../types/advertisement.type';
 
 export const useProduct = (id?: string) => {
-  const [advert, setAdvert] = React.useState<Advert>();
+  const [advert, setAdvert] = React.useState<AdvertItems>();
 
   React.useEffect(() => {
     async function fetchProducts() {
@@ -11,7 +11,7 @@ export const useProduct = (id?: string) => {
       setAdvert(data);
     }
     fetchProducts();
-  }, []);
+  }, [id]);
 
   return { advert };
 };

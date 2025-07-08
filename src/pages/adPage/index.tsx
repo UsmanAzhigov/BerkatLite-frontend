@@ -6,7 +6,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { Button } from '../../shared/ui';
-import { useProduct } from '../../shared/hooks/product';
+import { useProduct } from '../../shared/hooks/useProduct';
 import { formattedDate } from '../../shared/lib/formattedDate';
 
 export default function AdPage() {

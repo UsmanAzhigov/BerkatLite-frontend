@@ -3,7 +3,7 @@ export interface Property {
   text: string;
 }
 
-export interface Advert {
+export interface AdvertItems {
   id: string;
   title: string;
   description: string;
@@ -15,4 +15,14 @@ export interface Advert {
   phone: string[];
   properties: Array<Property>;
   createdAt: string;
+}
+
+export interface Advert {
+  items: AdvertItems[];
+  meta: {
+    page: number;
+    take: number;
+    total: number;
+    totalPages: number;
+  };
 }
