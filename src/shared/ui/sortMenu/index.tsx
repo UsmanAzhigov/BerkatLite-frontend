@@ -1,13 +1,13 @@
 import { Menu, MenuItem } from '@mui/material';
 import type { FC } from 'react';
 
+import { sortOptions } from '../../constants.tsx';
 import type { SortMenuProps } from './type';
 
 export const SortMenu: FC<SortMenuProps> = ({
   anchorEl,
   open,
   onClose,
-  options,
   sortBy,
   sortOrder,
   onChange,
@@ -19,7 +19,7 @@ export const SortMenu: FC<SortMenuProps> = ({
     anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
     transformOrigin={{ vertical: 'top', horizontal: 'left' }}
   >
-    {options.map((option) => (
+    {sortOptions.map((option) => (
       <MenuItem
         key={option.value}
         onClick={() =>

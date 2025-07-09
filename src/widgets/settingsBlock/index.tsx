@@ -2,26 +2,14 @@ import { SwapVert, TuneOutlined } from '@mui/icons-material';
 import { Box, Stack } from '@mui/material';
 import type { FC } from 'react';
 
+import { categories } from '../../shared/constants';
 import { useAllCities } from '../../shared/hooks/useAllCities';
 import { SortBy, SortOrder } from '../../shared/types/defaultFields.type';
 import { Button } from '../../shared/ui';
 import { FilterMenu } from '../../shared/ui/filterMenu';
 import type { FilterOption } from '../../shared/ui/filterMenu/type';
 import { SortMenu } from '../../shared/ui/sortMenu';
-import type { SortOption } from '../../shared/ui/sortMenu/type';
 import type { FilterBlockProps } from './type';
-
-const categories = [
-  { value: '', label: 'Все категории' },
-  { value: 'Транспорт', label: 'Транспорт' },
-  { value: 'Недвижимость', label: 'Недвижимость' },
-];
-
-const sortOptions: SortOption[] = [
-  { value: SortBy.PRICE, label: 'По цене' },
-  { value: SortBy.POPULAR, label: 'По популярности' },
-  { value: SortBy.CREATED_AT, label: 'По дате' },
-];
 
 export const FilterBlock: FC<FilterBlockProps> = ({ fields, setFields }) => {
   const allCities = useAllCities();
@@ -127,9 +115,8 @@ export const FilterBlock: FC<FilterBlockProps> = ({ fields, setFields }) => {
           anchorEl={fields.sortAnchorEl}
           open={Boolean(fields.sortAnchorEl)}
           onClose={() => setFields((f) => ({ ...f, sortAnchorEl: null }))}
-          options={sortOptions}
           sortBy={fields.sortBy as string}
-          sortOrder={fields.sortOrder as 'ASC' | 'DESC'}
+          sortOrder={fields.sortOrder as unknown as 'ASC' | 'DESC'}
           onChange={handleSortChange}
         />
       </Box>

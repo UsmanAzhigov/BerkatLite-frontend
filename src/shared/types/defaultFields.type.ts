@@ -1,16 +1,14 @@
-export const SortBy = {
-  PRICE: 'price',
-  POPULAR: 'popular',
-  CREATED_AT: 'createdAt',
-} as const;
-export type SortBy = (typeof SortBy)[keyof typeof SortBy];
+export enum SortBy {
+  PRICE = 'price',
+  POPULAR = 'popular',
+  CREATED_AT = 'createdAt',
+}
 
-export const SortOrder = {
-  ASC: 'asc',
-  DESC: 'desc',
-  NONE: '',
-} as const;
-export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder];
+export enum SortOrder {
+  ASC = 'asc',
+  DESC = 'desc',
+  NONE = '',
+}
 
 export interface DefaultFields {
   search: string;
