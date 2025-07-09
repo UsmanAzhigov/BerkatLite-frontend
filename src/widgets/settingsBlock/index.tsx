@@ -3,17 +3,13 @@ import { Box, Stack } from '@mui/material';
 import type { FC } from 'react';
 
 import { useAllCities } from '../../shared/hooks/useAllCities';
-import { SortBy, SortOrder, type DefaultFields } from '../../shared/types/defaultFields.type';
+import { SortBy, SortOrder } from '../../shared/types/defaultFields.type';
 import { Button } from '../../shared/ui';
 import { FilterMenu } from '../../shared/ui/filterMenu';
 import type { FilterOption } from '../../shared/ui/filterMenu/type';
 import { SortMenu } from '../../shared/ui/sortMenu';
 import type { SortOption } from '../../shared/ui/sortMenu/type';
-
-interface FilterBlockProps {
-  fields: DefaultFields;
-  setFields: React.Dispatch<React.SetStateAction<DefaultFields>>;
-}
+import type { FilterBlockProps } from './type';
 
 const categories = [
   { value: '', label: 'Все категории' },
