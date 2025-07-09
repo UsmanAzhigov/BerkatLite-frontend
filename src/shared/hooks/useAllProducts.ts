@@ -1,4 +1,5 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+
 import { axiosInstance } from '../lib/axios';
 import type { Advert } from '../types';
 
@@ -21,9 +22,9 @@ export const useAllProducts = ({
   priceTo,
   category,
 }: Params) => {
-  const [products, setProducts] = React.useState<Advert | null>(null);
+  const [products, setProducts] = useState<Advert | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchProducts = async () => {
       try {
         const params: Record<string, string | number | boolean | undefined> = {

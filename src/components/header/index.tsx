@@ -1,8 +1,9 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, IconButton, Stack, Toolbar, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/logo.svg';
+
 import styles from './index.module.scss';
+import logo from '../../assets/logo.svg';
 
 export const Header = () => {
   const navigate = useNavigate();

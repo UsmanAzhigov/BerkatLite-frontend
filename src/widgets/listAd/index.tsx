@@ -2,6 +2,7 @@ import { List, ListItem } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { AdCard } from '../../components/adCard';
 import { formattedDate } from '../../shared/lib/formattedDate';
 import type { AdvertItems } from '../../shared/types/advertisement.type';

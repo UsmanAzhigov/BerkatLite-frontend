@@ -1,5 +1,6 @@
 import { Box, CssBaseline } from '@mui/material';
 import React from 'react';
+
 import { Header } from '../../components';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {

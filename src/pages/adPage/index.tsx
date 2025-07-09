@@ -3,11 +3,12 @@ import { Box, Divider, Paper, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
+
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import { Button } from '../../shared/ui';
 import { useProduct } from '../../shared/hooks/useProduct';
 import { formattedDate } from '../../shared/lib/formattedDate';
+import { Button } from '../../shared/ui';
 
 export default function AdPage() {
   const { id } = useParams();
