@@ -13,7 +13,6 @@ import type { FilterBlockProps } from './type';
 
 export const FilterBlock: FC<FilterBlockProps> = ({ fields, setFields }) => {
   const allCities = useAllCities();
-
   const filterOptions: FilterOption[] = [
     {
       key: 'category',
@@ -26,7 +25,7 @@ export const FilterBlock: FC<FilterBlockProps> = ({ fields, setFields }) => {
       label: 'Город',
       type: 'select',
       options: [
-        { value: '', label: 'Все города' },
+        { value: 'Все города', label: 'Все города' },
         ...allCities.map((city) => ({ value: city, label: city })),
       ],
     },
