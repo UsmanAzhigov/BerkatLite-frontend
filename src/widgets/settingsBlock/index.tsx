@@ -1,77 +1,74 @@
 import { SwapVert, TuneOutlined } from '@mui/icons-material';
 import { Box, Stack } from '@mui/material';
-import type { FC } from 'react';
+import { useState } from 'react';
 
 import { categories } from '../../shared/constants';
-import { useAllCities } from '../../shared/hooks/useAllCities';
+import { useCityStore } from '../../shared/store/cityStore';
+import { useFilterStore } from '../../shared/store/filterStore';
 import { SortBy, SortOrder } from '../../shared/types/defaultFields.type';
 import { Button } from '../../shared/ui';
 import { FilterMenu } from '../../shared/ui/filterMenu';
-import type { FilterOption } from '../../shared/ui/filterMenu/type';
 import { SortMenu } from '../../shared/ui/sortMenu';
-import type { FilterBlockProps } from './type';
 
-export const FilterBlock: FC<FilterBlockProps> = ({ fields, setFields }) => {
-  const allCities = useAllCities();
-  const filterOptions: FilterOption[] = [
+export const FilterBlock = () => {
+  const [sortAnchorEl, setSortAnchorEl] = useState<null | HTMLElement>(null);
+  const [filterAnchorEl, setFilterAnchorEl] = useState<null | HTMLElement>(null);
+  const { category, city, priceFrom, priceTo, sortBy, sortOrder, setField, resetFilters } =
+    useFilterStore();
+  const { cities, fetchCities } = useCityStore();
+
+  useState(() => {
+    fetchCities();
+  });
+
+  const filterOptions = [
     {
       key: 'category',
       label: 'Категория',
-      type: 'select',
+      type: 'select' as const,
       options: categories,
     },
     {
       key: 'city',
       label: 'Город',
-      type: 'select',
+      type: 'select' as const,
       options: [
         { value: 'Все города', label: 'Все города' },
-        ...allCities.map((city) => ({ value: city, label: city })),
+        ...cities.map((city) => ({ value: city, label: city })),
       ],
     },
     {
       key: 'priceFrom',
       label: 'Цена от',
-      type: 'input',
+      type: 'input' as const,
     },
     {
       key: 'priceTo',
       label: 'Цена до',
-      type: 'input',
+      type: 'input' as const,
     },
   ];
 
   const handleFilterChange = (key: string, value: string) => {
-    setFields((f) => ({ ...f, [key]: value, page: 1 }));
+    setField(key as any, value);
   };
 
   const handleResetFilters = () => {
-    setFields((f) => ({
-      ...f,
-      category: '',
-      city: '',
-      priceFrom: '',
-      priceTo: '',
-      filterAnchorEl: null,
-      page: 1,
-    }));
+    resetFilters();
+    setFilterAnchorEl(null);
   };
 
-  const handleSortChange = (sortBy: string, sortOrder: 'ASC' | 'DESC') => {
-    setFields((f) => ({
-      ...f,
-      sortBy: sortBy as SortBy,
-      sortOrder: sortOrder === 'ASC' ? SortOrder['ASC'] : SortOrder['DESC'],
-      sortAnchorEl: null,
-      page: 1,
-    }));
+  const handleSortChange = (sortByValue: string, sortOrderValue: 'ASC' | 'DESC') => {
+    setField('sortBy', sortByValue as SortBy);
+    setField('sortOrder', sortOrderValue === 'ASC' ? SortOrder['ASC'] : SortOrder['DESC']);
+    setSortAnchorEl(null);
   };
 
   const filterValues: Record<string, string> = {
-    category: fields.category ?? '',
-    city: fields.city ?? '',
-    priceFrom: fields.priceFrom ?? '',
-    priceTo: fields.priceTo ?? '',
+    category: category ?? '',
+    city: city ?? '',
+    priceFrom: priceFrom ?? '',
+    priceTo: priceTo ?? '',
   };
 
   return (
@@ -80,14 +77,14 @@ export const FilterBlock: FC<FilterBlockProps> = ({ fields, setFields }) => {
         <Button
           fullWidth
           endIcon={<TuneOutlined />}
-          onClick={(e) => setFields((f) => ({ ...f, filterAnchorEl: e.currentTarget }))}
+          onClick={(e) => setFilterAnchorEl(e.currentTarget)}
         >
           Фильтры
         </Button>
         <FilterMenu
-          anchorEl={fields.filterAnchorEl}
-          open={Boolean(fields.filterAnchorEl)}
-          onClose={() => setFields((f) => ({ ...f, filterAnchorEl: null }))}
+          anchorEl={filterAnchorEl}
+          open={Boolean(filterAnchorEl)}
+          onClose={() => setFilterAnchorEl(null)}
           filters={filterOptions}
           values={filterValues}
           onChange={handleFilterChange}
@@ -100,22 +97,21 @@ export const FilterBlock: FC<FilterBlockProps> = ({ fields, setFields }) => {
           endIcon={
             <SwapVert
               sx={{
-                transform:
-                  fields.sortOrder === SortOrder['ASC'] ? 'rotate(0deg)' : 'rotate(180deg)',
+                transform: sortOrder === SortOrder['ASC'] ? 'rotate(0deg)' : 'rotate(180deg)',
                 transition: 'transform 0.3s ease',
               }}
             />
           }
-          onClick={(e) => setFields((f) => ({ ...f, sortAnchorEl: e.currentTarget }))}
+          onClick={(e) => setSortAnchorEl(e.currentTarget)}
         >
           Сортировка
         </Button>
         <SortMenu
-          anchorEl={fields.sortAnchorEl}
-          open={Boolean(fields.sortAnchorEl)}
-          onClose={() => setFields((f) => ({ ...f, sortAnchorEl: null }))}
-          sortBy={fields.sortBy as string}
-          sortOrder={fields.sortOrder as unknown as 'ASC' | 'DESC'}
+          anchorEl={sortAnchorEl}
+          open={Boolean(sortAnchorEl)}
+          onClose={() => setSortAnchorEl(null)}
+          sortBy={sortBy as string}
+          sortOrder={sortOrder as unknown as 'ASC' | 'DESC'}
           onChange={handleSortChange}
         />
       </Box>

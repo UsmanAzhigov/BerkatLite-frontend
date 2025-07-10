@@ -1,40 +1,40 @@
 import { Pagination, Stack } from '@mui/material';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { useDebounce } from '../../shared/hooks/useDebounce';
 
 import { LoadingSkeleton, StateMessage } from '../../components';
 import { useAllProducts } from '../../shared/hooks/useAllProducts';
-import { defaultFields, type DefaultFields } from '../../shared/types/defaultFields.type';
+import { useFilterStore } from '../../shared/store/filterStore';
 import { InputSearch } from '../../shared/ui';
 import { SizeSearch, VarianSearch } from '../../shared/ui/inputSearch/type';
 import { FilterBlock, ListAd } from '../../widgets';
 
 export default function HomePage() {
-  const [fields, setFields] = useState<DefaultFields>(defaultFields);
+  const { search, sortBy, sortOrder, page, city, priceFrom, priceTo, category, setField } =
+    useFilterStore();
+  const debouncedSearch = useDebounce(search, 400);
   const productQueryParams = useMemo(
     () => ({
-      page: fields.page,
-      sortBy: fields.sortBy,
-      sortOrder: fields.sortOrder,
-      city: fields.city || undefined,
-      priceFrom: fields.priceFrom ? Number(fields.priceFrom) : undefined,
-      priceTo: fields.priceTo ? Number(fields.priceTo) : undefined,
-      category: fields.category || undefined,
+      page,
+      sortBy,
+      sortOrder,
+      city: city || undefined,
+      priceFrom: priceFrom ? Number(priceFrom) : undefined,
+      priceTo: priceTo ? Number(priceTo) : undefined,
+      category: category || undefined,
+      search: debouncedSearch || undefined,
     }),
-    [fields],
+    [page, sortBy, sortOrder, city, priceFrom, priceTo, category, debouncedSearch],
   );
 
   const { items: allItems, totalPages, loading } = useAllProducts(productQueryParams);
-  const filteredItems = useMemo(
-    () => allItems.filter((item) => item.title.toLowerCase().includes(fields.search.toLowerCase())),
-    [allItems, fields.search],
-  );
 
   const renderContent = () => {
     if (loading) {
       return <LoadingSkeleton />;
     }
-    if (filteredItems.length > 0) {
-      return <ListAd data={filteredItems} />;
+    if (allItems.length > 0) {
+      return <ListAd data={allItems} />;
     }
     return <StateMessage />;
   };
@@ -47,24 +47,18 @@ export default function HomePage() {
           type="search"
           size={SizeSearch.SMALL}
           variant={VarianSearch.OUTLINED}
-          value={fields.search}
-          onChange={(e) =>
-            setFields((prev) => ({
-              ...prev,
-              search: e.target.value,
-              page: 1,
-            }))
-          }
+          value={search}
+          onChange={(e) => setField('search', e.target.value)}
         />
-        <FilterBlock fields={fields} setFields={setFields} />
+        <FilterBlock />
         {renderContent()}
       </Stack>
-      {filteredItems.length > 0 && (
+      {allItems.length > 0 && (
         <Pagination
           sx={{ margin: '0 auto', mb: 2 }}
           count={totalPages}
-          page={fields.page}
-          onChange={(_, value) => setFields((prev) => ({ ...prev, page: value }))}
+          page={page}
+          onChange={(_, value) => setField('page', value)}
         />
       )}
     </Stack>

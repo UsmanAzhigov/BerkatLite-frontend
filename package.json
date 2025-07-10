@@ -17,7 +17,6 @@
     "@mui/icons-material": "^7.2.0",
     "@mui/material": "^7.2.0",
     "@mui/styled-engine": "^7.2.0",
-    "@reduxjs/toolkit": "^2.8.2",
     "axios": "^1.10.0",
     "framer-motion": "^12.23.0",
     "react": "^19.1.0",
@@ -26,7 +25,8 @@
     "react-slick": "^0.30.3",
     "sass": "^1.89.2",
     "scss": "^0.2.4",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",

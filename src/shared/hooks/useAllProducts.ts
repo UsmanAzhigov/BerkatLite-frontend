@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 
 import { axiosInstance } from '../lib/axios';
-import type { Advert } from '../types';
+import type { Advert, SortBy, SortOrder } from '../types';
 
 interface Params {
   page?: number;
-  sortBy?: 'price' | 'popular' | 'createdAt';
-  sortOrder?: 'asc' | 'desc' | '';
+  sortBy?: SortBy | '';
+  sortOrder?: SortOrder | '';
   city?: string;
   category?: string;
   priceFrom?: number;
   priceTo?: number;
+  search?: string;
 }
 
 export const useAllProducts = ({
@@ -21,6 +22,7 @@ export const useAllProducts = ({
   priceFrom,
   priceTo,
   category,
+  search,
 }: Params) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Advert | null>(null);
@@ -37,6 +39,7 @@ export const useAllProducts = ({
           priceFrom,
           priceTo,
           category,
+          search,
         };
 
         const query = new URLSearchParams(
@@ -55,7 +58,7 @@ export const useAllProducts = ({
     };
 
     fetchProducts();
-  }, [page, sortBy, sortOrder, city, priceFrom, priceTo, category]);
+  }, [page, sortBy, sortOrder, city, priceFrom, priceTo, category, search]);
 
   return {
     items: products?.items || [],
