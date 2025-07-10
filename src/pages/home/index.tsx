@@ -1,6 +1,7 @@
 import { Pagination, Stack } from '@mui/material';
 import { useMemo, useState } from 'react';
 
+import { LoadingSkeleton, StateMessage } from '../../components';
 import { useAllProducts } from '../../shared/hooks/useAllProducts';
 import { defaultFields, type DefaultFields } from '../../shared/types/defaultFields.type';
 import { InputSearch } from '../../shared/ui';
@@ -22,11 +23,21 @@ export default function HomePage() {
     [fields],
   );
 
-  const { items: allItems, totalPages } = useAllProducts(productQueryParams);
+  const { items: allItems, totalPages, loading } = useAllProducts(productQueryParams);
   const filteredItems = useMemo(
     () => allItems.filter((item) => item.title.toLowerCase().includes(fields.search.toLowerCase())),
     [allItems, fields.search],
   );
+
+  const renderContent = () => {
+    if (loading) {
+      return <LoadingSkeleton />;
+    }
+    if (filteredItems.length > 0) {
+      return <ListAd data={filteredItems} />;
+    }
+    return <StateMessage />;
+  };
 
   return (
     <Stack flexDirection="column" justifyContent="space-between" gap={1} sx={{ minHeight: '85vh' }}>
@@ -46,15 +57,9 @@ export default function HomePage() {
           }
         />
         <FilterBlock fields={fields} setFields={setFields} />
-        {filteredItems.length > 0 ? (
-          <ListAd data={filteredItems} />
-        ) : (
-          <Stack justifyContent="center" alignItems="center" flex={1} height="100%">
-            <h2>Товары не найдены</h2>
-          </Stack>
-        )}
+        {renderContent()}
       </Stack>
-      {!fields.search.trim() && (
+      {filteredItems.length > 0 && (
         <Pagination
           sx={{ margin: '0 auto', mb: 2 }}
           count={totalPages}

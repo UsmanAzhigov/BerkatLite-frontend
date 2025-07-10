@@ -22,10 +22,12 @@ export const useAllProducts = ({
   priceTo,
   category,
 }: Params) => {
+  const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Advert | null>(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setLoading(true);
       try {
         const params: Record<string, string | number | boolean | undefined> = {
           page,
@@ -47,6 +49,8 @@ export const useAllProducts = ({
         setProducts(data);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -56,5 +60,6 @@ export const useAllProducts = ({
   return {
     items: products?.items || [],
     totalPages: products?.meta?.totalPages || 1,
+    loading,
   };
 };
