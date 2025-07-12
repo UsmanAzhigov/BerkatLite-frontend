@@ -7,11 +7,11 @@ interface Params {
   page?: number;
   sortBy?: SortBy | '';
   sortOrder?: SortOrder | '';
-  city?: string;
-  category?: string;
-  priceFrom?: number;
-  priceTo?: number;
-  search?: string;
+  city?: string | null;
+  category?: string | null;
+  priceFrom?: number | null;
+  priceTo?: number | null;
+  search?: string | null;
 }
 
 export const useAllProducts = ({
@@ -31,7 +31,7 @@ export const useAllProducts = ({
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const params: Record<string, string | number | boolean | undefined> = {
+        const params: Record<string, string | number | boolean | null | undefined> = {
           page,
           sortBy,
           sortOrder,
@@ -44,7 +44,7 @@ export const useAllProducts = ({
 
         const query = new URLSearchParams(
           Object.entries(params)
-            .filter(([, v]) => v !== undefined && v !== '')
+            .filter(([, v]) => v !== undefined && v !== null && v !== '')
             .map(([k, v]) => [k, String(v)]),
         );
 

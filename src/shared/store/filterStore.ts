@@ -4,7 +4,7 @@ import { defaultFields, type DefaultFields } from '../types/defaultFields.type';
 export type FilterState = Omit<DefaultFields, 'filterAnchorEl' | 'sortAnchorEl'>;
 
 interface FilterStore extends FilterState {
-  setField: <K extends keyof FilterState>(key: K, value: FilterState[K]) => void;
+  setField: <K extends keyof FilterState>(key: string, value: FilterState[K]) => void;
   resetFilters: () => void;
 }
 
