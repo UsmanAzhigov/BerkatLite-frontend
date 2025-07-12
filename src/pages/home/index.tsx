@@ -12,7 +12,7 @@ import { FilterBlock, ListAd } from '../../widgets';
 export default function HomePage() {
   const { search, sortBy, sortOrder, page, city, priceFrom, priceTo, category, setField } =
     useFilterStore();
-  const debouncedSearch = useDebounce(search, 400);
+  const debouncedSearch = useDebounce(search, 500);
   const productQueryParams = useMemo(
     () => ({
       page,
@@ -36,7 +36,7 @@ export default function HomePage() {
     if (allItems.length > 0) {
       return <ListAd data={allItems} />;
     }
-    return <StateMessage />;
+    return <StateMessage message="Товаров нет 🫩" />;
   };
 
   return (
