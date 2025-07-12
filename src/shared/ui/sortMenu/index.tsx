@@ -2,6 +2,7 @@ import { Menu, MenuItem } from '@mui/material';
 import type { FC } from 'react';
 
 import { sortOptions } from '../../constants.tsx';
+import { SortOrder } from '../../types/defaultFields.type.ts';
 import type { SortMenuProps } from './type';
 
 export const SortMenu: FC<SortMenuProps> = ({
@@ -25,12 +26,16 @@ export const SortMenu: FC<SortMenuProps> = ({
         onClick={() =>
           onChange(
             option.value,
-            sortBy === option.value ? (sortOrder === 'ASC' ? 'DESC' : 'ASC') : 'ASC',
+            sortBy === option.value
+              ? sortOrder === SortOrder['ASC']
+                ? SortOrder['DESC']
+                : SortOrder['ASC']
+              : SortOrder['ASC'],
           )
         }
       >
         {option.label}
-        {sortBy === option.value ? (sortOrder === 'ASC' ? '↑' : '↓') : ''}
+        {sortBy === option.value ? (sortOrder === SortOrder['ASC'] ? '↑' : '↓') : ''}
       </MenuItem>
     ))}
   </Menu>

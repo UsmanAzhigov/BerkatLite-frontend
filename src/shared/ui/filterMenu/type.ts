@@ -1,7 +1,9 @@
+import type { TypeFileds } from '../../types/defaultFields.type';
+
 export interface FilterOption {
   key: string;
   label: string;
-  type: 'select' | 'input';
+  type: TypeFileds;
   options?: { value: string; label: string }[];
 }
 

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { categories } from '../../shared/constants';
 import { useCityStore } from '../../shared/store/cityStore';
 import { useFilterStore } from '../../shared/store/filterStore';
-import { SortBy, SortOrder } from '../../shared/types/defaultFields.type';
+import { SortBy, SortOrder, TypeFileds } from '../../shared/types/defaultFields.type';
 import { Button } from '../../shared/ui';
 import { FilterMenu } from '../../shared/ui/filterMenu';
 import { SortMenu } from '../../shared/ui/sortMenu';
@@ -25,13 +25,13 @@ export const FilterBlock = () => {
     {
       key: 'category',
       label: 'Категория',
-      type: 'select' as const,
+      type: TypeFileds['SELECT'],
       options: categories,
     },
     {
       key: 'city',
       label: 'Город',
-      type: 'select' as const,
+      type: TypeFileds['SELECT'],
       options: [
         { value: 'Все города', label: 'Все города' },
         ...cities.map((city) => ({ value: city, label: city })),
@@ -40,17 +40,17 @@ export const FilterBlock = () => {
     {
       key: 'priceFrom',
       label: 'Цена от',
-      type: 'input' as const,
+      type: TypeFileds['INPUT'],
     },
     {
       key: 'priceTo',
       label: 'Цена до',
-      type: 'input' as const,
+      type: TypeFileds['INPUT'],
     },
   ];
 
   const handleFilterChange = (key: string, value: string) => {
-    setField(key as any, value);
+    setField(key, value);
   };
 
   const handleResetFilters = () => {
@@ -58,13 +58,16 @@ export const FilterBlock = () => {
     setFilterAnchorEl(null);
   };
 
-  const handleSortChange = (sortByValue: string, sortOrderValue: 'ASC' | 'DESC') => {
+  const handleSortChange = (sortByValue: string, sortOrderValue: SortOrder) => {
     setField('sortBy', sortByValue as SortBy);
-    setField('sortOrder', sortOrderValue === 'ASC' ? SortOrder['ASC'] : SortOrder['DESC']);
+    setField(
+      'sortOrder',
+      sortOrderValue === SortOrder['ASC'] ? SortOrder['ASC'] : SortOrder['DESC'],
+    );
     setSortAnchorEl(null);
   };
 
-  const filterValues: Record<string, string> = {
+  const filterValues = {
     category: category ?? '',
     city: city ?? '',
     priceFrom: priceFrom ?? '',
@@ -110,8 +113,8 @@ export const FilterBlock = () => {
           anchorEl={sortAnchorEl}
           open={Boolean(sortAnchorEl)}
           onClose={() => setSortAnchorEl(null)}
-          sortBy={sortBy as string}
-          sortOrder={sortOrder as unknown as 'ASC' | 'DESC'}
+          sortBy={sortBy}
+          sortOrder={sortOrder}
           onChange={handleSortChange}
         />
       </Box>

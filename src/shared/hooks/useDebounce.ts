@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 export function useDebounce<T>(value: T, delay: number): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
-  const handler = useRef<number | undefined>(undefined);
+  const handler = useRef<number | null>(null);
 
   useEffect(() => {
     if (handler.current) {

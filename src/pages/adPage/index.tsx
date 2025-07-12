@@ -19,8 +19,6 @@ export default function AdPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  if (!advert) return <Typography>Объявление не найдено</Typography>;
-
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -30,12 +28,13 @@ export default function AdPage() {
     arrows: false,
   };
 
+  if (!advert) return <Typography>Объявление не найдено</Typography>;
+
   return (
     <>
       <Button fullWidth={false} onClick={() => navigate(-1)} variant="outlined" sx={{ mb: 2 }}>
         ← Назад
       </Button>
-
       <Paper
         sx={{
           width: '100%',

@@ -10,6 +10,11 @@ export enum SortOrder {
   NONE = '',
 }
 
+export enum TypeFileds {
+  SELECT = 'select',
+  INPUT = 'input',
+}
+
 export interface DefaultFields {
   search: string;
   sortOrder: SortOrder;

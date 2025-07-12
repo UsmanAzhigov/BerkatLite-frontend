@@ -3,7 +3,7 @@ import React from 'react';
 
 export const LoadingSkeleton: React.FC = () => (
   <Stack gap={2}>
-    {[...Array(4)].map((_, i) => (
+    {[...Array(2)].map((_, i) => (
       <Paper
         key={i}
         sx={{

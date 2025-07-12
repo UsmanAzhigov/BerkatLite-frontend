@@ -12,17 +12,17 @@ import { FilterBlock, ListAd } from '../../widgets';
 export default function HomePage() {
   const { search, sortBy, sortOrder, page, city, priceFrom, priceTo, category, setField } =
     useFilterStore();
-  const debouncedSearch = useDebounce(search, 400);
+  const debouncedSearch = useDebounce(search, 500);
   const productQueryParams = useMemo(
     () => ({
       page,
       sortBy,
       sortOrder,
-      city: city || undefined,
-      priceFrom: priceFrom ? Number(priceFrom) : undefined,
-      priceTo: priceTo ? Number(priceTo) : undefined,
-      category: category || undefined,
-      search: debouncedSearch || undefined,
+      city: city || null,
+      priceFrom: priceFrom ? Number(priceFrom) : null,
+      priceTo: priceTo ? Number(priceTo) : null,
+      category: category || null,
+      search: debouncedSearch || null,
     }),
     [page, sortBy, sortOrder, city, priceFrom, priceTo, category, debouncedSearch],
   );
@@ -36,7 +36,7 @@ export default function HomePage() {
     if (allItems.length > 0) {
       return <ListAd data={allItems} />;
     }
-    return <StateMessage />;
+    return <StateMessage message="Товаров нет 🫩" />;
   };
 
   return (
