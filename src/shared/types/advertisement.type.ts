@@ -12,7 +12,7 @@ export interface AdvertItems {
   category: string;
   popular: number;
   city: string;
-  phone: string[];
+  phone: string;
   properties: Array<Property>;
   createdAt: string;
 }

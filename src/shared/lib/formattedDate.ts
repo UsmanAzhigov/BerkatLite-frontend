@@ -1,11 +1,11 @@
-export function formattedDate(dateString: string | Date): string {
-  const date = new Date(dateString);
+export function formattedDate(dateString: string) {
+  const date = new Date(dateString.replace(' ', 'T'));
 
-  return date.toLocaleString('ru-RU', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+  const pad = (num: number) => num.toString().padStart(2, '0');
+
+  const day = pad(date.getDate());
+  const month = pad(date.getMonth() + 1);
+  const year = date.getFullYear();
+
+  return `${day}.${month}.${year}`;
 }

@@ -109,12 +109,12 @@ export default function AdPage() {
                 startIcon={<Message />}
                 sx={{ backgroundColor: '#25D366' }}
                 onClick={() =>
-                  window.open(`https://wa.me/${advert.phone[0].replace(/\D/g, '')}`, '_blank')
+                  window.open(`https://wa.me/${advert.phone.replace(/\D/g, '')}`, '_blank')
                 }
               >
                 Написать
               </Button>
-              <Button startIcon={<Phone />} onClick={() => window.open(`tel:${advert.phone[0]}`)}>
+              <Button startIcon={<Phone />} onClick={() => window.open(`tel:${advert.phone}`)}>
                 Позвонить
               </Button>
             </Box>
