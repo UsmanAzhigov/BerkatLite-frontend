@@ -7,7 +7,7 @@ import { useAllProducts } from '../shared/hooks/useAllProducts';
 import { useFilterStore } from '../shared/store/filterStore';
 import { InputSearch } from '../shared/ui';
 import { SizeSearch, VarianSearch } from '../shared/ui/inputSearch/inputSearch.type';
-import { FilterBlock, ListAd } from '../widgets';
+import { ListAd, SettingsBlock } from '../widgets';
 
 export const HomePage = () => {
   const { search, sortBy, sortOrder, page, city, priceFrom, priceTo, category, setField } =
@@ -50,7 +50,7 @@ export const HomePage = () => {
           value={search}
           onChange={(e) => setField('search', e.target.value)}
         />
-        <FilterBlock />
+        <SettingsBlock />
         {renderContent()}
       </Stack>
       {allItems.length > 0 && (

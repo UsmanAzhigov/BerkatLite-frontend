@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { AdPage, HomePage } from '../pages';
+import { AdvertPage, HomePage } from '../pages';
 import Layout from './layout';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/ad/:id" element={<AdPage />} />
+        <Route path="/ad/:id" element={<AdvertPage />} />
       </Routes>
     </Layout>
   );
