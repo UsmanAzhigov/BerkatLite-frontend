@@ -12,7 +12,15 @@ export interface AdCardProps {
   onClick?: () => void;
 }
 
-export const AdCard = ({ image, title, price, description, city, date, onClick }: AdCardProps) => (
+export const AdvertCard = ({
+  image,
+  title,
+  price,
+  description,
+  city,
+  date,
+  onClick,
+}: AdCardProps) => (
   <Paper
     component={motion.div}
     whileHover={{ scale: 1.005, boxShadow: '0px 4px 16px 4px rgba(0,0,0,0.13)' }}

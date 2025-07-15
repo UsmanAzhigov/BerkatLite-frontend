@@ -1,15 +1,15 @@
 import { Pagination, Stack } from '@mui/material';
 import { useMemo } from 'react';
-import { useDebounce } from '../../shared/hooks/useDebounce';
+import { useDebounce } from '../shared/hooks/useDebounce';
 
-import { LoadingSkeleton, StateMessage } from '../../components';
-import { useAllProducts } from '../../shared/hooks/useAllProducts';
-import { useFilterStore } from '../../shared/store/filterStore';
-import { InputSearch } from '../../shared/ui';
-import { SizeSearch, VarianSearch } from '../../shared/ui/inputSearch/type';
-import { FilterBlock, ListAd } from '../../widgets';
+import { LoadingSkeleton, StateMessage } from '../components';
+import { useAllProducts } from '../shared/hooks/useAllProducts';
+import { useFilterStore } from '../shared/store/filterStore';
+import { InputSearch } from '../shared/ui';
+import { SizeSearch, VarianSearch } from '../shared/ui/inputSearch/inputSearch.type';
+import { FilterBlock, ListAd } from '../widgets';
 
-export default function HomePage() {
+export const HomePage = () => {
   const { search, sortBy, sortOrder, page, city, priceFrom, priceTo, category, setField } =
     useFilterStore();
   const debouncedSearch = useDebounce(search, 500);
@@ -63,4 +63,4 @@ export default function HomePage() {
       )}
     </Stack>
   );
-}
+};

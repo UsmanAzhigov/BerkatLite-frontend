@@ -6,11 +6,11 @@ import Slider from 'react-slick';
 
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import { useProduct } from '../../shared/hooks/useProduct';
-import { formattedDate } from '../../shared/lib/formattedDate';
-import { Button } from '../../shared/ui';
+import { useProduct } from '../shared/hooks/useProduct';
+import { formattedDate } from '../shared/lib/formattedDate';
+import { Button } from '../shared/ui';
 
-export default function AdPage() {
+export const AdvertPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { advert } = useProduct(id);
@@ -147,4 +147,4 @@ export default function AdPage() {
       </Paper>
     </>
   );
-}
+};

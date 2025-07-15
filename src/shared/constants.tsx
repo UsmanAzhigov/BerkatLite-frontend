@@ -1,5 +1,5 @@
 import { SortBy } from './types';
-import type { SortOption } from './ui/sortMenu/type';
+import type { SortOption } from './ui/sortMenu/sortMenu.type';
 
 export const categories = [
   { value: 'Все категории', label: 'Все категории' },

@@ -2,9 +2,10 @@ import { List, ListItem } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AdCard } from '../../components/adCard';
-import { formattedDate } from '../../shared/lib/formattedDate';
-import type { AdvertItems } from '../../shared/types/advertisement.type';
+
+import { AdvertCard } from '../components/advertCard';
+import { formattedDate } from '../shared/lib/formattedDate';
+import type { AdvertItems } from '../shared/types/advertisement.type';
 
 interface ListAdType {
   data: AdvertItems[];
@@ -28,7 +29,7 @@ export const ListAd: FC<ListAdType> = ({ data }) => {
             exit={{ opacity: 0, y: 30 }}
             transition={{ duration: 0.4, type: 'spring', stiffness: 60 }}
           >
-            <AdCard
+            <AdvertCard
               image={ad.images}
               title={ad.title}
               price={ad.price}

@@ -1,2 +1,2 @@
-export { ListAd } from './listAd';
-export { FilterBlock } from './settingsBlock';
+export { ListAd } from './listAdvert';
+export { SettingsBlock } from './settingsBlock';

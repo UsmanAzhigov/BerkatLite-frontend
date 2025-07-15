@@ -3,7 +3,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import React from 'react';
 
-import { SizeSearch, VarianSearch } from './type';
+import { SizeSearch, VarianSearch } from './inputSearch.type';
 
 export const InputSearch: React.FC<React.ComponentProps<typeof TextField>> = (props) => {
   return (

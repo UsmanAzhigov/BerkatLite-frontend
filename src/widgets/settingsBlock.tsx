@@ -2,15 +2,15 @@ import { SwapVert, TuneOutlined } from '@mui/icons-material';
 import { Box, Stack } from '@mui/material';
 import { useState } from 'react';
 
-import { categories } from '../../shared/constants';
-import { useCityStore } from '../../shared/store/cityStore';
-import { useFilterStore } from '../../shared/store/filterStore';
-import { SortBy, SortOrder, TypeFileds } from '../../shared/types/defaultFields.type';
-import { Button } from '../../shared/ui';
-import { FilterMenu } from '../../shared/ui/filterMenu';
-import { SortMenu } from '../../shared/ui/sortMenu';
+import { categories } from '../shared/constants';
+import { useCityStore } from '../shared/store/cityStore';
+import { useFilterStore } from '../shared/store/filterStore';
+import { SortBy, SortOrder, TypeFileds } from '../shared/types/defaultFields.type';
+import { Button } from '../shared/ui';
+import { FilterMenu } from '../shared/ui/filterMenu/filterMenu';
+import { SortMenu } from '../shared/ui/sortMenu/SortMenu';
 
-export const FilterBlock = () => {
+export const SettingsBlock = () => {
   const [sortAnchorEl, setSortAnchorEl] = useState<null | HTMLElement>(null);
   const [filterAnchorEl, setFilterAnchorEl] = useState<null | HTMLElement>(null);
   const { category, city, priceFrom, priceTo, sortBy, sortOrder, setField, resetFilters } =

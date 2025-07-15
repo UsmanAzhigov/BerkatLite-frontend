@@ -3,7 +3,7 @@ import type { FC } from 'react';
 
 import { sortOptions } from '../../constants.tsx';
 import { SortOrder } from '../../types/defaultFields.type.ts';
-import type { SortMenuProps } from './type';
+import type { SortMenuProps } from './sortMenu.type.ts';
 
 export const SortMenu: FC<SortMenuProps> = ({
   anchorEl,

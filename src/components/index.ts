@@ -1,4 +1,4 @@
-export { AdCard } from './adCard';
-export { Header } from './header';
-export { LoadingSkeleton } from './loadingSkeleton';
-export { StateMessage } from './stateMessage';
+export { Advert } from './advertCard';
+export { Header } from './header/header';
+export { StateMessage } from './infoMessage';
+export { LoadingSkeleton } from './skeletonLoader';

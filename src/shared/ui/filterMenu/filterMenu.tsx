@@ -1,7 +1,7 @@
 import { Button, FormControl, InputLabel, Menu, MenuItem, Select, TextField } from '@mui/material';
 import type { FC } from 'react';
 
-import type { FilterMenuProps } from './type';
+import type { FilterMenuProps } from './filterMenu.type';
 
 export const FilterMenu: FC<FilterMenuProps> = ({
   anchorEl,

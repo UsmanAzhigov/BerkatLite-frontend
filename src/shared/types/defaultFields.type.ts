@@ -24,8 +24,8 @@ export interface DefaultFields {
   priceFrom: string;
   priceTo: string;
   category: string;
-  filterAnchorEl: null | HTMLElement;
-  sortAnchorEl: null | HTMLElement;
+  filterAnchorEl: null;
+  sortAnchorEl: null;
 }
 
 export const defaultFields: DefaultFields = {
