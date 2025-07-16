@@ -1,14 +1,14 @@
-import { TypeFileds } from '../../types/defaultFields.type';
+import { FILTER_KEYS, TypeFileds } from '../../types';
 
 export const getFilterOptions = (cities: string[], categories: any[]) => [
   {
-    key: 'category',
+    key: FILTER_KEYS['CATEGORY'],
     label: 'Категория',
     type: TypeFileds['SELECT'],
     options: categories,
   },
   {
-    key: 'city',
+    key: FILTER_KEYS['CITY'],
     label: 'Город',
     type: TypeFileds['SELECT'],
     options: [
@@ -17,12 +17,12 @@ export const getFilterOptions = (cities: string[], categories: any[]) => [
     ],
   },
   {
-    key: 'priceFrom',
+    key: FILTER_KEYS['PRICE_FROM'],
     label: 'Цена от',
     type: TypeFileds['INPUT'],
   },
   {
-    key: 'priceTo',
+    key: FILTER_KEYS['PRICE_TO'],
     label: 'Цена до',
     type: TypeFileds['INPUT'],
   },

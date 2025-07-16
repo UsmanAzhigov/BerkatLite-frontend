@@ -12,5 +12,3 @@ export const sortOptions: SortOption[] = [
   { value: SortBy['POPULAR'], label: 'По популярности' },
   { value: SortBy['CREATED_AT'], label: 'По дате' },
 ];
-
-export const FILTER_KEYS_RESET_PAGE = ['category', 'city', 'priceFrom', 'priceTo'] as const;
