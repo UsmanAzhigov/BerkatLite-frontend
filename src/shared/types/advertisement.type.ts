@@ -28,3 +28,14 @@ export interface Advert {
   items: AdvertItems[];
   meta: AdvertMetaProps;
 }
+
+export interface InfoBlockProps {
+  title: string;
+  price?: number;
+  description: string;
+}
+
+export interface ImageBlockProps {
+  image?: string[];
+  title: string;
+}

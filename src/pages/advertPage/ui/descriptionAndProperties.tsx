@@ -1,10 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
-
-interface Property {
-  name: string;
-  text: string;
-}
+import type { Property } from '../../../shared/types/advertisement.type';
 
 interface DescriptionAndPropertiesProps {
   description: string;

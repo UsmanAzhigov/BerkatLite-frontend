@@ -1,10 +1,6 @@
 import { ImageNotSupported } from '@mui/icons-material';
 import { Box, Typography } from '@mui/material';
-
-interface ImageBlockProps {
-  image?: string[];
-  title: string;
-}
+import type { ImageBlockProps } from '../../../shared/types/advertisement.type';
 
 export const ImageBlock = ({ image, title }: ImageBlockProps) =>
   image && image.length > 0 ? (

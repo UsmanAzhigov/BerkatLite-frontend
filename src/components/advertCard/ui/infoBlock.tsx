@@ -1,10 +1,5 @@
 import { Box, Typography } from '@mui/material';
-
-interface InfoBlockProps {
-  title: string;
-  price?: number;
-  description: string;
-}
+import type { InfoBlockProps } from '../../../shared/types/advertisement.type';
 
 export const InfoBlock = ({ title, price, description }: InfoBlockProps) => (
   <>

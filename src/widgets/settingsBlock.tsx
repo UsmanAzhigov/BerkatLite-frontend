@@ -1,78 +1,44 @@
 import { SwapVert, TuneOutlined } from '@mui/icons-material';
 import { Box, Stack } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { categories } from '../shared/constants';
+import { useAllCities } from '../shared/hooks/useAllCities';
+import { useFilterHandlers } from '../shared/hooks/useFilterHandlers';
+import { getFilterValues } from '../shared/lib/getFilterValues';
 import { useCityStore } from '../shared/store/cityStore';
 import { useFilterStore } from '../shared/store/filterStore';
-import { SortBy, SortOrder, TypeFileds } from '../shared/types/defaultFields.type';
+import { SortOrder } from '../shared/types/defaultFields.type';
 import { Button } from '../shared/ui';
 import { FilterMenu } from '../shared/ui/filterMenu/filterMenu';
-import { SortMenu } from '../shared/ui/sortMenu/SortMenu';
+import { getFilterOptions } from '../shared/ui/filterMenu/filterOptions';
+import { SortMenu } from '../shared/ui/sortMenu/sortMenu';
 
 export const SettingsBlock = () => {
   const [sortAnchorEl, setSortAnchorEl] = useState<null | HTMLElement>(null);
   const [filterAnchorEl, setFilterAnchorEl] = useState<null | HTMLElement>(null);
   const { category, city, priceFrom, priceTo, sortBy, sortOrder, setField, resetFilters } =
     useFilterStore();
-  const { cities, fetchCities } = useCityStore();
 
-  useState(() => {
+  const { cities } = useCityStore();
+  const { fetchCities } = useAllCities();
+  const filterOptions = getFilterOptions(cities, categories);
+  const filterValues = getFilterValues(category, city, priceFrom, priceTo);
+
+  const { handleFilterChange, handleResetFilters, handleSortChange } = useFilterHandlers(
+    setField,
+    resetFilters,
+    setFilterAnchorEl,
+    setSortAnchorEl,
+  );
+
+  const handleFilterChangeAdapter = (key: string, value: string) => {
+    handleFilterChange(key as keyof typeof filterValues, value);
+  };
+
+  useEffect(() => {
     fetchCities();
-  });
-
-  const filterOptions = [
-    {
-      key: 'category',
-      label: 'Категория',
-      type: TypeFileds['SELECT'],
-      options: categories,
-    },
-    {
-      key: 'city',
-      label: 'Город',
-      type: TypeFileds['SELECT'],
-      options: [
-        { value: 'Все города', label: 'Все города' },
-        ...cities.map((city) => ({ value: city, label: city })),
-      ],
-    },
-    {
-      key: 'priceFrom',
-      label: 'Цена от',
-      type: TypeFileds['INPUT'],
-    },
-    {
-      key: 'priceTo',
-      label: 'Цена до',
-      type: TypeFileds['INPUT'],
-    },
-  ];
-
-  const handleFilterChange = (key: string, value: string) => {
-    setField(key, value);
-  };
-
-  const handleResetFilters = () => {
-    resetFilters();
-    setFilterAnchorEl(null);
-  };
-
-  const handleSortChange = (sortByValue: string, sortOrderValue: SortOrder) => {
-    setField('sortBy', sortByValue as SortBy);
-    setField(
-      'sortOrder',
-      sortOrderValue === SortOrder['ASC'] ? SortOrder['ASC'] : SortOrder['DESC'],
-    );
-    setSortAnchorEl(null);
-  };
-
-  const filterValues = {
-    category: category ?? '',
-    city: city ?? '',
-    priceFrom: priceFrom ?? '',
-    priceTo: priceTo ?? '',
-  };
+  }, [fetchCities]);
 
   return (
     <Stack flexDirection="row" alignItems="center" justifyContent="space-between" gap={2}>
@@ -90,7 +56,7 @@ export const SettingsBlock = () => {
           onClose={() => setFilterAnchorEl(null)}
           filters={filterOptions}
           values={filterValues}
-          onChange={handleFilterChange}
+          onChange={handleFilterChangeAdapter}
           onReset={handleResetFilters}
         />
       </Box>

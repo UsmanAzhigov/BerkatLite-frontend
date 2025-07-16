@@ -6,8 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
-import { useAdvert } from '../../shared/hooks/useAdver';
-import { formattedDate } from '../../shared/lib/formattedDate';
+import { useAdvert } from '../../shared/hooks/useAdvert';
 
 import { Button } from '../../shared/ui';
 import { AdvertMainInfo, DescriptionAndProperties, ImageGallery, LocationAndDate } from './ui';
@@ -44,11 +43,7 @@ export const AdvertPage = () => {
         <ImageGallery images={advert.images} title={advert.title} />
         <Box sx={{ p: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
           <AdvertMainInfo title={advert.title} price={advert.price} phone={advert.phone} />
-          <LocationAndDate
-            city={advert.city}
-            createdAt={advert.createdAt}
-            formattedDate={formattedDate}
-          />
+          <LocationAndDate city={advert.city} createdAt={advert.createdAt} />
           <Divider />
           <DescriptionAndProperties
             description={advert.description}

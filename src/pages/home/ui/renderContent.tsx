@@ -1,10 +1,11 @@
 import { type FC } from 'react';
 import { InfoMessage, LoadingSkeleton } from '../../../components';
+import type { AdvertItems } from '../../../shared/types/advertisement.type';
 import { ListAd } from '../../../widgets';
 
 interface RenderContentProps {
   loading: boolean;
-  allItems: any[];
+  allItems: AdvertItems[];
 }
 
 export const RenderContent: FC<RenderContentProps> = ({ loading, allItems }) => {

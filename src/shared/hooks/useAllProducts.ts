@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { axiosInstance } from '../lib/axios';
 import type { Advert, SortBy, SortOrder } from '../types';
+import type { AdvertItems } from '../types/advertisement.type';
 
 interface Params {
   page?: number;
@@ -61,7 +62,7 @@ export const useAllProducts = ({
   }, [page, sortBy, sortOrder, city, priceFrom, priceTo, category, search]);
 
   return {
-    items: products?.items || [],
+    items: (products?.items as AdvertItems[]) || [],
     totalPages: products?.meta?.totalPages || 1,
     loading,
   };
