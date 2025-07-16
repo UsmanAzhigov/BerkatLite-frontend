@@ -1,9 +1,10 @@
 import { List, ListItem } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
+
 import type { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { AdvertCard } from '../components/advertCard';
+import { AdvertCard } from '../components';
 import { formattedDate } from '../shared/lib/formattedDate';
 import type { AdvertItems } from '../shared/types/advertisement.type';
 

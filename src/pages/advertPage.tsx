@@ -108,7 +108,7 @@ export const AdvertPage = () => {
                 startIcon={<Message />}
                 sx={{ backgroundColor: '#25D366' }}
                 onClick={() =>
-                  window.open(`https://wa.me/${advert.phone.replace(/\D/g, '')}`, '_blank')
+                  window.open(`https://wa.me/${advert.phone[0].replace(/\D/g, '')}`, '_blank')
                 }
               >
                 Написать

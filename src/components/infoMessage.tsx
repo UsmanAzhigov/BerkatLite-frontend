@@ -7,6 +7,6 @@ interface InfoMessageProps {
 
 export const InfoMessage: React.FC<InfoMessageProps> = ({ message }) => (
   <Stack justifyContent="center" alignItems="center" flex={1} height="100%">
-    <h2>{message || 'Ошибка'}</h2>
+    <h2>{message || ''}</h2>
   </Stack>
 );
