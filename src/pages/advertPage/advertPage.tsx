@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
-import { useProduct } from '../../shared/hooks/useProduct';
+import { useAdvert } from '../../shared/hooks/useAdver';
 import { formattedDate } from '../../shared/lib/formattedDate';
 
 import { Button } from '../../shared/ui';
@@ -15,7 +15,7 @@ import { AdvertMainInfo, DescriptionAndProperties, ImageGallery, LocationAndDate
 export const AdvertPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { advert } = useProduct(id);
+  const { advert } = useAdvert(id);
 
   useEffect(() => {
     window.scrollTo(0, 0);

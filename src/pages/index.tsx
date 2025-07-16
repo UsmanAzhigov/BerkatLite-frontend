@@ -1,2 +1,2 @@
 export { AdvertPage } from './advertPage/advertPage';
-export { HomePage } from './home';
+export { HomePage } from './home/home';
