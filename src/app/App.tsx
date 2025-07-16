@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import { AdvertPage, HomePage } from '../pages';
-import Layout from './layout';
+import { Layout } from './layout';
 
 function App() {
   return (

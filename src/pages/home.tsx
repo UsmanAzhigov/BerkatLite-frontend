@@ -2,7 +2,7 @@ import { Pagination, Stack } from '@mui/material';
 import { useMemo } from 'react';
 import { useDebounce } from '../shared/hooks/useDebounce';
 
-import { LoadingSkeleton, StateMessage } from '../components';
+import { InfoMessage, LoadingSkeleton } from '../components';
 import { useAllProducts } from '../shared/hooks/useAllProducts';
 import { useFilterStore } from '../shared/store/filterStore';
 import { InputSearch } from '../shared/ui';
@@ -36,7 +36,7 @@ export const HomePage = () => {
     if (allItems.length > 0) {
       return <ListAd data={allItems} />;
     }
-    return <StateMessage message="Товаров нет 🫩" />;
+    return <InfoMessage message="Товаров нет 🫩" />;
   };
 
   return (

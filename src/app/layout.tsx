@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Header } from '../components';
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <CssBaseline />
@@ -19,5 +19,3 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     </>
   );
 };
-
-export default Layout;

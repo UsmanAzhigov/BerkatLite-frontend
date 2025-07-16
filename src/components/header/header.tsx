@@ -2,7 +2,7 @@ import { AppBar, Stack, Toolbar, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
-import styles from './index.module.scss';
+import styles from './header.module.scss';
 
 export const Header = () => {
   const navigate = useNavigate();
