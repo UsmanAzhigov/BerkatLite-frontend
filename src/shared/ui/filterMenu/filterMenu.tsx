@@ -3,6 +3,16 @@ import type { FC } from 'react';
 
 import type { FilterMenuProps } from './filterMenu.type';
 
+/**
+ * Свойства для компонента FilterMenu
+ * @property {HTMLElement | null} anchorEl - Элемент, к которому привязан выпадающий список
+ * @property {boolean} open - Флаг открытия меню
+ * @property {() => void} onClose - Обработчик закрытия меню
+ * @property {any[]} filters - Список фильтров
+ * @property {Record<string, any>} values - Значения фильтров
+ * @property {(key: string, value: string) => void} onChange - Обработчик изменения фильтра
+ * @property {() => void} onReset - Обработчик сброса фильтров
+ */
 export const FilterMenu: FC<FilterMenuProps> = ({
   anchorEl,
   open,

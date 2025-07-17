@@ -13,6 +13,7 @@ interface FilterValues {
   city: string;
   priceFrom: string;
   priceTo: string;
+  [key: string]: string;
 }
 
 export interface FilterMenuProps {

@@ -1,5 +1,8 @@
 import { create } from 'zustand';
 
+/**
+ * Интерфейс CityStore описывает zustand store для городов
+ */
 interface CityStore {
   cities: string[];
   loading: boolean;
@@ -7,6 +10,9 @@ interface CityStore {
   setLoading: (loading: boolean) => void;
 }
 
+/**
+ * useCityStore — zustand store для управления списком городов
+ */
 export const useCityStore = create<CityStore>((set) => ({
   cities: [],
   loading: false,

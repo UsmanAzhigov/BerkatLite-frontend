@@ -3,6 +3,10 @@ import { axiosInstance } from '../lib/axios';
 import { useCityStore } from '../store/cityStore';
 import type { AdvertItems } from '../types/advertisement.type';
 
+/**
+ * Хук useAllCities предоставляет функцию для загрузки всех городов из объявлений
+ * @returns {{ fetchCities: () => Promise<void> }} Функция для загрузки городов
+ */
 export const useAllCities = () => {
   const { setCities, setLoading } = useCityStore();
 

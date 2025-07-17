@@ -1,5 +1,11 @@
 import { FILTER_KEYS, TypeFileds } from '../../types';
 
+/**
+ * Функция getFilterOptions формирует массив опций фильтрации для объявленийыы
+ * @param {string[]} cities - Список городов
+ * @param {any[]} categories - Список категорий
+ * @returns {Array} Массив опций фильтрации
+ */
 export const getFilterOptions = (cities: string[], categories: any[]) => [
   {
     key: FILTER_KEYS['CATEGORY'],

@@ -3,10 +3,19 @@ import type { ButtonProps as MuiButtonProps } from '@mui/material/Button';
 import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
+/**
+ * Свойства для компонента Button
+ * @property {ReactNode} [children] - Дочерние элементы кнопки
+ */
 export interface ButtonProps extends MuiButtonProps {
   children?: ReactNode;
 }
 
+/**
+ * Кастомная кнопка с анимацией нажатия
+ * @param {ButtonProps} props - Свойства компонента
+ * @returns {JSX.Element} Кнопка
+ */
 export const Button = (props: ButtonProps) => {
   const { children, sx, fullWidth, ...rest } = props;
   const defaultSx = {

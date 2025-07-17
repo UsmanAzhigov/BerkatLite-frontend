@@ -5,6 +5,15 @@ import { sortOptions } from '../../constants.tsx';
 import { SortOrder } from '../../types/defaultFields.type.ts';
 import type { SortMenuProps } from './sortMenu.type.ts';
 
+/**
+ * Свойства для компонента SortMenu
+ * @property {HTMLElement | null} anchorEl - Элемент, к которому привязан выпадающий список
+ * @property {boolean} open - Флаг открытия меню
+ * @property {() => void} onClose - Обработчик закрытия меню
+ * @property {string} sortBy - Текущее поле сортировки
+ * @property {SortOrder} sortOrder - Текущий порядок сортировки
+ * @property {(sortBy: string, sortOrder: SortOrder) => void} onChange - Обработчик изменения сортировки
+ */
 export const SortMenu: FC<SortMenuProps> = ({
   anchorEl,
   open,

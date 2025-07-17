@@ -8,10 +8,19 @@ import { AdvertCard } from '../components';
 import { formatDate } from '../shared/lib/dateFormat';
 import type { AdvertItems } from '../shared/types/advertisement.type';
 
+/**
+ * Свойства для компонента ListAd
+ * @property {AdvertItems[]} data - Список объявлений для отображения
+ */
 interface ListAdType {
   data: AdvertItems[];
 }
 
+/**
+ * Компонент ListAd отображает список карточек объявлений с анимацией
+ * @param {ListAdType} props - Свойства компонента
+ * @returns {JSX.Element} Список карточек объявлений
+ */
 export const ListAd: FC<ListAdType> = ({ data }) => {
   const navigate = useNavigate();
 

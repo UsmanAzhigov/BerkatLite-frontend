@@ -10,6 +10,11 @@ import { SizeSearch, VarianSearch } from '../../shared/ui/inputSearch/inputSearc
 import { SettingsBlock } from '../../widgets';
 import { RenderContent } from './ui';
 
+/**
+ * Главная страница со списком товаров, поиском и пагинацией
+ * Использует zustand для управления фильтрами и поиском
+ * @returns {JSX.Element} Компонент главной страницы
+ */
 export const HomePage = () => {
   const { search, setSearch } = useSearch();
   const { page, setField } = useFilterStore();
@@ -17,10 +22,20 @@ export const HomePage = () => {
   const { items: allItems, totalPages, loading } = useAllProducts(productQueryParams);
 
   const hasItems = allItems.length > 0;
+
+  /**
+   * Обработчик изменения значения поиска
+   * @param {React.ChangeEvent<HTMLInputElement>} e - Событие изменения инпута
+   */
   const handleInputSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
+  /**
+   * Обработчик изменения страницы пагинации
+   * @param {React.ChangeEvent<unknown>} _ - Событие изменения
+   * @param {number} value - Новая страница
+   */
   const handlePaginationChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setField('page', value);
   };

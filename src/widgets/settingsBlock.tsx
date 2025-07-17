@@ -14,6 +14,10 @@ import { FilterMenu } from '../shared/ui/filterMenu/filterMenu';
 import { getFilterOptions } from '../shared/ui/filterMenu/filterOptions';
 import { SortMenu } from '../shared/ui/sortMenu/sortMenu';
 
+/**
+ * Компонент SettingsBlock отображает фильтры и сортировку для списка объявлений
+ * @returns {JSX.Element} Блок фильтров и сортировки
+ */
 export const SettingsBlock = () => {
   const [sortAnchorEl, setSortAnchorEl] = useState<null | HTMLElement>(null);
   const [filterAnchorEl, setFilterAnchorEl] = useState<null | HTMLElement>(null);

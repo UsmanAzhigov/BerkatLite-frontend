@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import styles from './header.module.scss';
 
+/**
+ * Компонент Header отображает шапку приложения с логотипом и названием
+ * @returns {JSX.Element} Шапка приложения
+ */
 export const Header = () => {
   const navigate = useNavigate();
   const onBack = () => {

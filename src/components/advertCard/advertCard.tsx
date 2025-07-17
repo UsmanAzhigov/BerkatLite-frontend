@@ -2,6 +2,16 @@ import { Paper, Stack } from '@mui/material';
 import { motion } from 'framer-motion';
 import { FooterBlock, ImageBlock, InfoBlock } from './ui';
 
+/**
+ * Свойства для компонента карточки объявления.
+ * @property {string[]} [image] - Массив URL изображений объявления
+ * @property {string} title - Заголовок объявления
+ * @property {number} [price] - Цена объявления
+ * @property {string} description - Описание объявления
+ * @property {string} city - Город размещения объявления
+ * @property {string} date - Дата публикации объявления
+ * @property {() => void} [onClick] - Обработчик клика по карточке
+ */
 export interface AdCardProps {
   image?: string[];
   title: string;
@@ -12,6 +22,11 @@ export interface AdCardProps {
   onClick?: () => void;
 }
 
+/**
+ * Карточка объявления. Отображает изображение, заголовок, цену, описание, город и дату.
+ * @param {AdCardProps} props - Свойства компонента
+ * @returns {JSX.Element} Стилизованная карточка объявления
+ */
 export const AdvertCard = ({
   image,
   title,

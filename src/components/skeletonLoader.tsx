@@ -1,6 +1,10 @@
 import { Box, Paper, Skeleton, Stack } from '@mui/material';
 import React from 'react';
 
+/**
+ * Компонент LoadingSkeleton отображает скелетон для списка объявлений во время загрузки
+ * @returns {JSX.Element} Скелетон карточек объявлений
+ */
 export const LoadingSkeleton: React.FC = () => (
   <Stack gap={2}>
     {[...Array(2)].map((_, i) => (

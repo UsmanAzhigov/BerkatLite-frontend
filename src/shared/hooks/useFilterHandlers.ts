@@ -1,6 +1,14 @@
 import type { FilterState } from '../store/filterStore';
 import { FILTER_KEYS, SortOrder } from '../types/defaultFields.type';
 
+/**
+ * Хук useFilterHandlers предоставляет обработчики для фильтрации и сортировки объявлений
+ * @param setField - Функция для установки значения фильтра
+ * @param resetFilters - Функция для сброса фильтров
+ * @param setFilterAnchorEl - Функция для управления якорем меню фильтров
+ * @param setSortAnchorEl - Функция для управления якорем меню сортировки
+ * @returns {{ handleFilterChange, handleResetFilters, handleSortChange }} Обработчики фильтров и сортировки
+ */
 export const useFilterHandlers = (
   setField: <K extends keyof FilterState>(key: K, value: FilterState[K]) => void,
   resetFilters: () => void,

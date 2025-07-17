@@ -5,6 +5,11 @@ import React from 'react';
 
 import { SizeSearch, VarianSearch } from './inputSearch.type';
 
+/**
+ * Компонент InputSearch отображает поле поиска с иконкой
+ * @param {React.ComponentProps<typeof TextField>} props - Свойства компонента
+ * @returns {JSX.Element} Поле поиска
+ */
 export const InputSearch: React.FC<React.ComponentProps<typeof TextField>> = (props) => {
   return (
     <TextField

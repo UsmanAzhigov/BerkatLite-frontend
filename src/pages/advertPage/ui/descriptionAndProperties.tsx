@@ -2,11 +2,21 @@ import { Box, Typography } from '@mui/material';
 import React from 'react';
 import type { Property } from '../../../shared/types/advertisement.type';
 
+/**
+ * Свойства для компонента DescriptionAndProperties
+ * @property {string} description - Описание объявления
+ * @property {Property[]} properties - Список свойств объявления
+ */
 interface DescriptionAndPropertiesProps {
   description: string;
   properties: Property[];
 }
 
+/**
+ * Компонент DescriptionAndProperties отображает описание и свойства объявления
+ * @param {DescriptionAndPropertiesProps} props - Свойства компонента
+ * @returns {JSX.Element} Описание и свойства объявления
+ */
 export const DescriptionAndProperties: React.FC<DescriptionAndPropertiesProps> = ({
   description,
   properties,

@@ -5,6 +5,11 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
+/**
+ * Свойства для компонента ImageGallery
+ * @property {string[]} [images] - Массив URL изображений объявления
+ * @property {string} title - Заголовок объявления (alt для изображения)
+ */
 interface ImageGalleryProps {
   images?: string[];
   title: string;
@@ -19,6 +24,11 @@ const sliderSettings = {
   arrows: false,
 };
 
+/**
+ * Компонент ImageGallery отображает галерею изображений объявления или заглушку, если изображений нет
+ * @param {ImageGalleryProps} props - Свойства компонента
+ * @returns {JSX.Element} Галерея изображений или заглушка
+ */
 export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => {
   if (images && images.length > 1) {
     return (
