@@ -35,10 +35,10 @@ export const useAllProducts = ({
           page,
           sortBy,
           sortOrder,
-          city,
+          city: city === 'Все города' ? '' : city,
           priceFrom,
           priceTo,
-          category,
+          category: category === 'Все категории' ? '' : category,
           search,
         };
 
