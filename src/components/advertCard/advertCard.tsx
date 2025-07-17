@@ -1,5 +1,6 @@
 import { Paper, Stack } from '@mui/material';
 import { motion } from 'framer-motion';
+import { COLORS } from '../../shared/constants';
 import { FooterBlock, ImageBlock, InfoBlock } from './ui';
 
 /**
@@ -38,7 +39,7 @@ export const AdvertCard = ({
 }: AdCardProps) => (
   <Paper
     component={motion.div}
-    whileHover={{ scale: 1.005, boxShadow: '0px 4px 16px 4px rgba(0,0,0,0.13)' }}
+    whileHover={{ scale: 1.005, boxShadow: `0px 4px 16px 4px ${COLORS.SHADOW_CARD}` }}
     transition={{ type: 'spring', stiffness: 200, damping: 15 }}
     sx={{
       width: '100%',
@@ -46,7 +47,7 @@ export const AdvertCard = ({
       position: 'relative',
       cursor: onClick ? 'pointer' : 'default',
       overflow: 'hidden',
-      boxShadow: '0px 1px 4px 4px rgba(0,0,0,0.1)',
+      boxShadow: `0px 1px 4px 4px ${COLORS.SHADOW_LIGHT}`,
     }}
     onClick={onClick}
   >

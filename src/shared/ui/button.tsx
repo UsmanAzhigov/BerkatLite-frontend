@@ -2,6 +2,7 @@ import { Button as MuiButton } from '@mui/material';
 import type { ButtonProps as MuiButtonProps } from '@mui/material/Button';
 import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
+import { COLORS } from '../constants';
 
 /**
  * Свойства для компонента Button
@@ -20,8 +21,8 @@ export const Button = (props: ButtonProps) => {
   const { children, sx, fullWidth, ...rest } = props;
   const defaultSx = {
     borderRadius: '10px',
-    backgroundColor: '#007BFF',
-    color: 'white',
+    backgroundColor: COLORS.BLUE,
+    color: COLORS.WHITE,
     alignItems: 'center',
     justifyContent: 'center',
     textTransform: 'none',

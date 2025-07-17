@@ -3,6 +3,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import React from 'react';
 
+import { COLORS } from '../../constants';
 import { SizeSearch, VarianSearch } from './inputSearch.type';
 
 /**
@@ -25,7 +26,7 @@ export const InputSearch: React.FC<React.ComponentProps<typeof TextField>> = (pr
           <InputAdornment position="start">
             <SearchIcon
               sx={{
-                color: '#D5D5D5',
+                color: COLORS.SEARCH_ICON,
               }}
             />
           </InputAdornment>
@@ -35,10 +36,10 @@ export const InputSearch: React.FC<React.ComponentProps<typeof TextField>> = (pr
       sx={{
         '& .MuiOutlinedInput-root': {
           borderRadius: '10px',
-          border: '0px solid #D5D5D5 ',
+          border: `0px solid ${COLORS.SEARCH_ICON} `,
         },
         '& .MuiOutlinedInput-placeholder': {
-          color: '#D5D5D5',
+          color: COLORS.SEARCH_ICON,
         },
         ...props.sx,
       }}

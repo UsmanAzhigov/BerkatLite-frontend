@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
+import { COLORS } from '../../shared/constants';
 import { useAdvert } from '../../shared/hooks/useAdvert';
 
 import { Button } from '../../shared/ui';
@@ -35,7 +36,7 @@ export const AdvertPage = () => {
           minHeight: 'calc(100vh - 32px)',
           borderRadius: '15px',
           overflow: 'hidden',
-          boxShadow: '0px 1px 4px 4px rgba(0,0,0,0.1)',
+          boxShadow: `0px 1px 4px 4px ${COLORS.SHADOW_LIGHT}`,
           display: 'flex',
           flexDirection: 'column',
         }}

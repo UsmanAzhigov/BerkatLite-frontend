@@ -1,5 +1,6 @@
 import { Box, Paper, Skeleton, Stack } from '@mui/material';
 import React from 'react';
+import { COLORS } from '../shared/constants';
 
 /**
  * Компонент LoadingSkeleton отображает скелетон для списка объявлений во время загрузки
@@ -15,7 +16,7 @@ export const LoadingSkeleton: React.FC = () => (
           borderRadius: '15px',
           position: 'relative',
           overflow: 'hidden',
-          boxShadow: '0px 1px 4px 4px rgba(0,0,0,0.1)',
+          boxShadow: `0px 1px 4px 4px ${COLORS.SHADOW_LIGHT}`,
         }}
       >
         <Skeleton variant="rectangular" width="100%" height={200} />

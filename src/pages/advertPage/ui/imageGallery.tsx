@@ -4,6 +4,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
+import { COLORS } from '../../../shared/constants';
 
 /**
  * Свойства для компонента ImageGallery
@@ -61,7 +62,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => 
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
-      sx={{ width: '100%', height: 200, backgroundColor: '#e0e0e0', color: '#777' }}
+      sx={{ width: '100%', height: 200, backgroundColor: COLORS.GREY_BG, color: COLORS.GREY_TEXT }}
     >
       <ImageNotSupported sx={{ fontSize: 48, mb: 1 }} />
       <Typography variant="body2">Нет фото</Typography>

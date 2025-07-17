@@ -1,5 +1,6 @@
 import { ImageNotSupported } from '@mui/icons-material';
 import { Box, Typography } from '@mui/material';
+import { COLORS } from '../../../shared/constants';
 import type { ImageBlockProps } from '../../../shared/types/advertisement.type';
 
 /**
@@ -27,8 +28,8 @@ export const ImageBlock = ({ image, title }: ImageBlockProps) =>
       sx={{
         width: '100%',
         height: 200,
-        backgroundColor: '#e0e0e0',
-        color: '#777',
+        backgroundColor: COLORS.GREY_BG,
+        color: COLORS.GREY_TEXT,
       }}
     >
       <ImageNotSupported sx={{ fontSize: 48, mb: 1 }} />

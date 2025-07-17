@@ -1,5 +1,6 @@
 import { Message, Phone } from '@mui/icons-material';
 import React from 'react';
+import { COLORS } from '../../../shared/constants';
 import { Button } from '../../../shared/ui';
 
 /**
@@ -19,7 +20,7 @@ export const ContactButtons: React.FC<ContactButtonsProps> = ({ phone }) => (
   <>
     <Button
       startIcon={<Message />}
-      sx={{ backgroundColor: '#25D366' }}
+      sx={{ backgroundColor: COLORS.GREEN_WHATSAPP }}
       onClick={() => window.open(`https://wa.me/${phone[0].replace(/\D/g, '')}`, '_blank')}
     >
       Написать
