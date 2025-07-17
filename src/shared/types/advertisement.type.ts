@@ -12,17 +12,30 @@ export interface AdvertItems {
   category: string;
   popular: number;
   city: string;
-  phone: string;
-  properties: Array<Property>;
+  phone: string[];
+  properties: Property[];
   createdAt: string;
+}
+
+interface AdvertMetaProps {
+  page: number;
+  take: number;
+  total: number;
+  totalPages: number;
 }
 
 export interface Advert {
   items: AdvertItems[];
-  meta: {
-    page: number;
-    take: number;
-    total: number;
-    totalPages: number;
-  };
+  meta: AdvertMetaProps;
+}
+
+export interface InfoBlockProps {
+  title: string;
+  price?: number;
+  description: string;
+}
+
+export interface ImageBlockProps {
+  image?: string[];
+  title: string;
 }

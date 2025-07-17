@@ -1,2 +1,2 @@
-export { default as AdPage } from './adPage';
-export { default as HomePage } from './home';
+export { AdvertPage } from './advertPage/advertPage';
+export { HomePage } from './home/home';

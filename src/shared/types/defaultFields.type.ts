@@ -15,6 +15,13 @@ export enum TypeFileds {
   INPUT = 'input',
 }
 
+export enum FILTER_KEYS {
+  CATEGORY = 'category',
+  CITY = 'city',
+  PRICE_FROM = 'priceFrom',
+  PRICE_TO = 'priceTo',
+}
+
 export interface DefaultFields {
   search: string;
   sortOrder: SortOrder;
@@ -24,8 +31,8 @@ export interface DefaultFields {
   priceFrom: string;
   priceTo: string;
   category: string;
-  filterAnchorEl: null | HTMLElement;
-  sortAnchorEl: null | HTMLElement;
+  filterAnchorEl: null;
+  sortAnchorEl: null;
 }
 
 export const defaultFields: DefaultFields = {

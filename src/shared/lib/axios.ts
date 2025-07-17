@@ -2,10 +2,18 @@ import type { AxiosInstance } from 'axios';
 import axios from 'axios';
 
 export const axiosInstance: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:7777',
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
-axiosInstance.interceptors.request.use((config) => {
-  config.headers.Authorization = window.localStorage.getItem('token');
-  return config;
-});
+export const showGlobalError = (message: string) => {
+  const event = new CustomEvent('global-error', { detail: message });
+  window.dispatchEvent(event);
+};
+
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    showGlobalError('Произошла ошибка при запросе к серверу');
+    return Promise.reject(error);
+  },
+);

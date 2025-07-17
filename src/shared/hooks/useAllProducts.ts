@@ -2,7 +2,19 @@ import { useEffect, useState } from 'react';
 
 import { axiosInstance } from '../lib/axios';
 import type { Advert, SortBy, SortOrder } from '../types';
+import type { AdvertItems } from '../types/advertisement.type';
 
+/**
+ * Параметры для хука useAllProducts
+ * @property {number} [page] - Номер страницы
+ * @property {SortBy | ''} [sortBy] - Поле сортировки
+ * @property {SortOrder | ''} [sortOrder] - Порядок сортировки
+ * @property {string | null} [city] - Город
+ * @property {string | null} [category] - Категория
+ * @property {number | null} [priceFrom] - Цена от
+ * @property {number | null} [priceTo] - Цена до
+ * @property {string | null} [search] - Поисковый запрос
+ */
 interface Params {
   page?: number;
   sortBy?: SortBy | '';
@@ -14,6 +26,11 @@ interface Params {
   search?: string | null;
 }
 
+/**
+ * Хук useAllProducts получает список объявлений с сервера с учетом фильтров и сортировки
+ * @param {Params} params - Параметры фильтрации и сортировки
+ * @returns {{ items: AdvertItems[]; totalPages: number; loading: boolean }} Список объявлений, количество страниц и флаг загрузки
+ */
 export const useAllProducts = ({
   page,
   sortBy,
@@ -61,7 +78,7 @@ export const useAllProducts = ({
   }, [page, sortBy, sortOrder, city, priceFrom, priceTo, category, search]);
 
   return {
-    items: products?.items || [],
+    items: (products?.items as AdvertItems[]) || [],
     totalPages: products?.meta?.totalPages || 1,
     loading,
   };

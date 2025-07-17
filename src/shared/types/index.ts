@@ -1,4 +1,4 @@
 export type { Advert, Property } from './advertisement.type';
-export { SortBy, SortOrder } from './defaultFields.type';
 
+export { FILTER_KEYS, SortBy, SortOrder, TypeFileds } from './defaultFields.type';
 export type { DefaultFields } from './defaultFields.type';
