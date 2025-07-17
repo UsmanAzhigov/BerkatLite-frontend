@@ -6,7 +6,13 @@ import { FILTER_KEYS, TypeFileds } from '../../types';
  * @param {any[]} categories - Список категорий
  * @returns {Array} Массив опций фильтрации
  */
-export const getFilterOptions = (cities: string[], categories: any[]) => [
+
+interface FilterCategories {
+  value: string;
+  label: string;
+}
+
+export const getFilterOptions = (cities: string[], categories: FilterCategories[]) => [
   {
     key: FILTER_KEYS['CATEGORY'],
     label: 'Категория',
