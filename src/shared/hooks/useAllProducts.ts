@@ -52,10 +52,10 @@ export const useAllProducts = ({
           page,
           sortBy,
           sortOrder,
-          city: city === 'Все города' ? '' : city,
+          cityId: city || undefined,
+          categoryId: category || undefined,
           priceFrom,
           priceTo,
-          category: category === 'Все категории' ? '' : category,
           search,
         };
 
@@ -65,7 +65,7 @@ export const useAllProducts = ({
             .map(([k, v]) => [k, String(v)]),
         );
 
-        const { data } = await axiosInstance.get(`/products?${query.toString()}`);
+        const { data } = await axiosInstance.get(`/?${query.toString()}`);
         setProducts(data);
       } catch (error) {
         console.error(error);

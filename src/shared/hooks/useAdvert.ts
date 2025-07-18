@@ -13,7 +13,7 @@ export const useAdvert = (id?: string) => {
 
   useEffect(() => {
     async function fetchAdvert() {
-      const { data } = await axiosInstance.get<AdvertItems>(`/products/${id}`);
+      const { data } = await axiosInstance.get<AdvertItems>(`/advert/${id}`);
       setAdvert(data);
     }
     fetchAdvert();

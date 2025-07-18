@@ -1,12 +1,13 @@
 import { create } from 'zustand';
+import type { SelectOption } from '../types';
 
 /**
  * Интерфейс CityStore описывает zustand store для городов
  */
 interface CityStore {
-  cities: string[];
+  cities: SelectOption[];
   loading: boolean;
-  setCities: (cities: string[]) => void;
+  setCities: (cities: SelectOption[]) => void;
   setLoading: (loading: boolean) => void;
 }
 

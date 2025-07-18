@@ -3,6 +3,21 @@ export interface Property {
   text: string;
 }
 
+export interface City {
+  id: string;
+  name: string;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+}
+
+export interface SelectOption {
+  value: string;
+  label: string;
+}
+
 export interface AdvertItems {
   id: string;
   title: string;
@@ -10,7 +25,7 @@ export interface AdvertItems {
   price: number;
   images: string[];
   category: string;
-  popular: number;
+  views: number;
   city: string;
   phone: string[];
   properties: Property[];

@@ -1,23 +1,25 @@
 import { useCallback } from 'react';
 import { axiosInstance } from '../lib/axios';
 import { useCityStore } from '../store/cityStore';
-import type { AdvertItems } from '../types/advertisement.type';
+import type { City } from '../types';
 
 /**
- * Хук useAllCities предоставляет функцию для загрузки всех городов из объявлений
+ * Хук useAllCities предоставляет функцию для загрузки городов из API `/cities`
  * @returns {{ fetchCities: () => Promise<void> }} Функция для загрузки городов
  */
+
 export const useAllCities = () => {
   const { setCities, setLoading } = useCityStore();
 
   const fetchCities = useCallback(async () => {
     setLoading(true);
     try {
-      const { data } = await axiosInstance.get('/products');
-      const uniqueCities = Array.from(
-        new Set((data.items || []).map((item: AdvertItems) => item.city)),
-      ).filter(Boolean) as string[];
-      setCities(uniqueCities);
+      const { data } = await axiosInstance.get<City[]>('/cities');
+      const cityOptions = data.map((city) => ({
+        value: city.id,
+        label: city.name,
+      }));
+      setCities(cityOptions);
     } catch (e) {
       setCities([]);
     } finally {

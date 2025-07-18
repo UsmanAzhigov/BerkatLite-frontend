@@ -1,6 +1,6 @@
 export enum SortBy {
   PRICE = 'price',
-  POPULAR = 'popular',
+  VIEWS = 'views',
   CREATED_AT = 'createdAt',
 }
 

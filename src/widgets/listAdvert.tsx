@@ -5,7 +5,6 @@ import type { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { AdvertCard } from '../components';
-import { formatDate } from '../shared/lib/dateFormat';
 import type { AdvertItems } from '../shared/types/advertisement.type';
 
 /**
@@ -45,7 +44,7 @@ export const ListAd: FC<ListAdType> = ({ data }) => {
               price={ad.price}
               description={ad.description}
               city={ad.city}
-              date={formatDate(ad.createdAt)}
+              date={ad.createdAt}
             />
           </ListItem>
         ))}

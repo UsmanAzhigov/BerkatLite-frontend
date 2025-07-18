@@ -2,10 +2,11 @@ import { SwapVert, TuneOutlined } from '@mui/icons-material';
 import { Box, Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-import { categories } from '../shared/constants';
+import { useAllCategories } from '../shared/hooks/useAllCategories';
 import { useAllCities } from '../shared/hooks/useAllCities';
 import { useFilterHandlers } from '../shared/hooks/useFilterHandlers';
 import { getFilterValues } from '../shared/lib/getFilterValues';
+import { useCategoryStore } from '../shared/store/categoryStore';
 import { useCityStore } from '../shared/store/cityStore';
 import { useFilterStore } from '../shared/store/filterStore';
 import { SortOrder } from '../shared/types/defaultFields.type';
@@ -25,7 +26,9 @@ export const SettingsBlock = () => {
     useFilterStore();
 
   const { cities } = useCityStore();
+  const { categories } = useCategoryStore();
   const { fetchCities } = useAllCities();
+  const { fetchCategories } = useAllCategories();
   const filterOptions = getFilterOptions(cities, categories);
   const filterValues = getFilterValues(category, city, priceFrom, priceTo);
 
@@ -42,7 +45,8 @@ export const SettingsBlock = () => {
 
   useEffect(() => {
     fetchCities();
-  }, [fetchCities]);
+    fetchCategories();
+  }, [fetchCities, fetchCategories]);
 
   return (
     <Stack flexDirection="row" alignItems="center" justifyContent="space-between" gap={2}>

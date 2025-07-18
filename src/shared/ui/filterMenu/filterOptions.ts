@@ -1,32 +1,24 @@
+import type { SelectOption } from '../../types';
 import { FILTER_KEYS, TypeFileds } from '../../types';
 
 /**
- * Функция getFilterOptions формирует массив опций фильтрации для объявленийыы
- * @param {string[]} cities - Список городов
- * @param {any[]} categories - Список категорий
+ * Функция getFilterOptions формирует массив опций фильтрации для объявлений
+ * @param {SelectOption[]} cities - Список городов (объекты с value/label)
+ * @param {SelectOption[]} categories - Список категорий (объекты с value/label)
  * @returns {Array} Массив опций фильтрации
  */
-
-interface FilterCategories {
-  value: string;
-  label: string;
-}
-
-export const getFilterOptions = (cities: string[], categories: FilterCategories[]) => [
+export const getFilterOptions = (cities: SelectOption[], categories: SelectOption[]) => [
   {
     key: FILTER_KEYS['CATEGORY'],
     label: 'Категория',
     type: TypeFileds['SELECT'],
-    options: categories,
+    options: [{ value: '', label: 'Все категории' }, ...categories],
   },
   {
     key: FILTER_KEYS['CITY'],
     label: 'Город',
     type: TypeFileds['SELECT'],
-    options: [
-      { value: 'Все города', label: 'Все города' },
-      ...cities.map((city) => ({ value: city, label: city })),
-    ],
+    options: [{ value: '', label: 'Все города' }, ...cities],
   },
   {
     key: FILTER_KEYS['PRICE_FROM'],

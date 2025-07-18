@@ -1,6 +1,5 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
-import { formatDate } from '../../../shared/lib/dateFormat';
 
 /**
  * Свойства для компонента LocationAndDate
@@ -23,7 +22,7 @@ export const LocationAndDate: React.FC<LocationAndDateProps> = ({ city, createdA
       {city}
     </Typography>
     <Typography fontSize={13} color="text.secondary" fontWeight={500}>
-      {formatDate(createdAt)}
+      {createdAt}
     </Typography>
   </Box>
 );
