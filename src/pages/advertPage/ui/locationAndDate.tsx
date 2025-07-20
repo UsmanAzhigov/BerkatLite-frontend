@@ -7,7 +7,7 @@ import React from 'react';
  * @property {string} createdAt - Дата создания объявления
  */
 interface LocationAndDateProps {
-  city: string;
+  city: string | null;
   createdAt: string;
 }
 

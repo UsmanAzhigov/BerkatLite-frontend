@@ -17,3 +17,17 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+
+/**
+ * Возвращает label города по его id из массива cities
+ * @param cities - массив городов (SelectOption[])
+ * @param cityId - id города
+ * @returns label города или null
+ */
+export function getCityLabelById(
+  cities: { value: string; label: string }[],
+  cityId?: string,
+): string | null {
+  if (!cityId) return null;
+  return cities.find((c) => c.value === cityId)?.label || null;
+}

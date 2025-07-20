@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { axiosInstance } from '../lib/axios';
+import { axiosInstance, getCityLabelById } from '../lib/axios';
+import { useCityStore } from '../store/cityStore';
 import type { AdvertItems } from '../types/advertisement.type';
 
 /**
@@ -9,6 +10,7 @@ import type { AdvertItems } from '../types/advertisement.type';
  * @returns {{ advert?: AdvertItems }} Данные объявления
  */
 export const useAdvert = (id?: string) => {
+  const { cities } = useCityStore();
   const [advert, setAdvert] = useState<AdvertItems>();
 
   useEffect(() => {
@@ -19,5 +21,7 @@ export const useAdvert = (id?: string) => {
     fetchAdvert();
   }, [id]);
 
-  return { advert };
+  const cityLabel = getCityLabelById(cities, advert?.cityId);
+
+  return { advert: advert ? { ...advert, city: cityLabel } : undefined };
 };

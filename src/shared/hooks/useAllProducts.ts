@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { axiosInstance } from '../lib/axios';
+import { axiosInstance, getCityLabelById } from '../lib/axios';
 import { useCityStore } from '../store/cityStore';
 import type { Advert, SortBy, SortOrder } from '../types';
 import type { AdvertItems } from '../types/advertisement.type';
@@ -82,7 +82,7 @@ export const useAllProducts = ({
   return {
     items: ((products?.items as AdvertItems[]) || []).map((item) => ({
       ...item,
-      city: cities.find((c) => c.value === item.cityId)?.label || null,
+      city: getCityLabelById(cities, item.cityId),
     })),
     totalPages: products?.meta?.totalPages || 1,
     loading,

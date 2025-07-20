@@ -1,6 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
+import { useEffect } from 'react';
 import { AdvertPage, HomePage } from '../pages';
+import { useAllCategories } from '../shared/hooks/useAllCategories';
+import { useAllCities } from '../shared/hooks/useAllCities';
 import { Layout } from './layout';
 
 /**
@@ -9,6 +12,14 @@ import { Layout } from './layout';
  * @returns {JSX.Element} Корневой компонент приложения
  */
 function App() {
+  const { fetchCities } = useAllCities();
+  const { fetchCategories } = useAllCategories();
+
+  useEffect(() => {
+    fetchCities();
+    fetchCategories();
+  }, []);
+
   return (
     <Layout>
       <Routes>

@@ -14,6 +14,7 @@ export const ImageBlock = ({ image, title }: ImageBlockProps) =>
       component="img"
       src={image[0]}
       alt={title}
+      loading="lazy"
       sx={{
         width: '100%',
         height: 200,

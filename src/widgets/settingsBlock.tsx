@@ -1,9 +1,7 @@
 import { SwapVert, TuneOutlined } from '@mui/icons-material';
 import { Box, Stack } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { useAllCategories } from '../shared/hooks/useAllCategories';
-import { useAllCities } from '../shared/hooks/useAllCities';
 import { useFilterHandlers } from '../shared/hooks/useFilterHandlers';
 import { getFilterValues } from '../shared/lib/getFilterValues';
 import { useCategoryStore } from '../shared/store/categoryStore';
@@ -27,8 +25,6 @@ export const SettingsBlock = () => {
 
   const { cities } = useCityStore();
   const { categories } = useCategoryStore();
-  const { fetchCities } = useAllCities();
-  const { fetchCategories } = useAllCategories();
   const filterOptions = getFilterOptions(cities, categories);
   const filterValues = getFilterValues(category, city, priceFrom, priceTo);
 
@@ -42,11 +38,6 @@ export const SettingsBlock = () => {
   const handleFilterChangeAdapter = (key: string, value: string) => {
     handleFilterChange(key as keyof typeof filterValues, value);
   };
-
-  useEffect(() => {
-    fetchCities();
-    fetchCategories();
-  }, [fetchCities, fetchCategories]);
 
   return (
     <Stack flexDirection="row" alignItems="center" justifyContent="space-between" gap={2}>

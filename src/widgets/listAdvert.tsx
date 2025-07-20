@@ -1,7 +1,9 @@
 import { Grid } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import type { FC } from 'react';
+import type { FC, Ref } from 'react';
+import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 
 import { AdvertCard } from '../components';
@@ -22,12 +24,25 @@ interface ListAdType {
  */
 export const ListAd: FC<ListAdType> = ({ data }) => {
   const navigate = useNavigate();
+  const [visibleCount, setVisibleCount] = useState(10);
+  const { ref, inView } = useInView({ threshold: 0 });
+
+  useEffect(() => {
+    if (inView && visibleCount < data.length) {
+      setVisibleCount((prev) => Math.min(prev + 10, data.length));
+    }
+  }, [inView, visibleCount, data.length]);
 
   return (
     <Grid container spacing={2}>
       <AnimatePresence>
-        {data?.map((ad) => (
-          <Grid size={{ xs: 6 }} key={ad.id} sx={{ display: 'flex' }}>
+        {data?.slice(0, visibleCount).map((ad, idx) => (
+          <Grid
+            size={{ xs: 6 }}
+            key={ad.id}
+            sx={{ display: 'flex' }}
+            ref={idx === visibleCount - 1 ? (ref as Ref<HTMLDivElement>) : undefined}
+          >
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -40,7 +55,7 @@ export const ListAd: FC<ListAdType> = ({ data }) => {
                 title={ad.title}
                 price={ad.price}
                 description={ad.description}
-                city={ad.city}
+                city={ad.city ?? ''}
                 date={ad.createdAt}
                 onClick={() => navigate(`/ad/${ad.id}`)}
               />

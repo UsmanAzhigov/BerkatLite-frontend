@@ -26,7 +26,8 @@ export interface AdvertItems {
   images: string[];
   category: string;
   views: number;
-  city: string;
+  city: string | null;
+  cityId?: string;
   phone: string[];
   properties: Property[];
   createdAt: string;
