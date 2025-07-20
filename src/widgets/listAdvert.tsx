@@ -52,7 +52,6 @@ export const ListAd: FC<ListAdType> = ({ data }) => {
             >
               <AdvertCard
                 image={ad.images}
-                title={ad.title}
                 price={ad.price}
                 description={ad.description}
                 city={ad.city ?? ''}

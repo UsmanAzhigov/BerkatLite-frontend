@@ -1,4 +1,3 @@
-import { Message, Phone } from '@mui/icons-material';
 import React from 'react';
 import { COLORS } from '../../../shared/constants';
 import { Button } from '../../../shared/ui';
@@ -19,14 +18,11 @@ interface ContactButtonsProps {
 export const ContactButtons: React.FC<ContactButtonsProps> = ({ phone }) => (
   <>
     <Button
-      startIcon={<Message />}
       sx={{ backgroundColor: COLORS.GREEN_WHATSAPP }}
       onClick={() => window.open(`https://wa.me/${phone[0].replace(/\D/g, '')}`, '_blank')}
     >
       Написать
     </Button>
-    <Button startIcon={<Phone />} onClick={() => window.open(`tel:${phone}`)}>
-      Позвонить
-    </Button>
+    <Button onClick={() => window.open(`tel:${phone}`)}>Позвонить</Button>
   </>
 );

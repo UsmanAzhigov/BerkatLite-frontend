@@ -1,4 +1,5 @@
-import { Box, Link, Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
+import { COLORS } from '../../../shared/constants';
 import type { InfoBlockProps } from '../../../shared/types/advertisement.type';
 
 /**
@@ -8,31 +9,20 @@ import type { InfoBlockProps } from '../../../shared/types/advertisement.type';
  * @property {string} description - Описание объявления
  */
 export const InfoBlock = ({
-  title,
   price,
   description,
   onShowMore,
-}: InfoBlockProps & { onShowMore?: () => void }) => {
+}: Omit<InfoBlockProps, 'title'> & { onShowMore?: () => void }) => {
   const MAX_LENGTH = 30;
   const isLong = description.length > MAX_LENGTH;
   const shortDescription = isLong ? description.slice(0, MAX_LENGTH) + '...' : description;
 
   return (
     <>
-      <Box display="flex" flexDirection="column" mb={1}>
-        <Typography fontSize={16} fontWeight={700} noWrap>
-          {title}
-        </Typography>
-        {price ? (
-          <Typography fontSize={16} fontWeight={600} color="primary">
-            {price} ₽
-          </Typography>
-        ) : (
-          <Typography fontSize={16} fontWeight={600} color="primary">
-            Не указана цена
-          </Typography>
-        )}
-      </Box>
+      <Typography fontSize={16} mt={1} mb={1} fontWeight={700} color={COLORS.BLACK}>
+        {price ? `${price} ₽` : 'Цена не указана'}
+      </Typography>
+
       <Typography fontSize={12} color="text.secondary" mb={5}>
         {shortDescription}
         {isLong && (

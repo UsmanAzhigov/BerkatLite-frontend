@@ -1,5 +1,6 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import React from 'react';
+import { COLORS } from '../../../shared/constants';
 import type { Property } from '../../../shared/types/advertisement.type';
 
 /**
@@ -30,9 +31,14 @@ export const DescriptionAndProperties: React.FC<DescriptionAndPropertiesProps> =
     <Box bgcolor="grey.300" width="1px" display={{ xs: 'none', md: 'block' }} />
     <Box flex={1}>
       {properties.map((prop, idx) => (
-        <Typography key={idx} fontSize={15} color="text.secondary" mb={0.5}>
-          <strong>{prop.name}:</strong> {prop.text}
-        </Typography>
+        <Stack key={idx} flexDirection="row" gap={1}>
+          <Typography fontSize={15} mb={0.5} color="text.secondary">
+            {prop.name}:
+          </Typography>
+          <Typography fontSize={15} color={COLORS.BLACK} fontWeight="700">
+            {prop.text}
+          </Typography>
+        </Stack>
       ))}
     </Box>
   </Box>

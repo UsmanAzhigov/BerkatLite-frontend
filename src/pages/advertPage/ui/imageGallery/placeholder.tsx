@@ -10,8 +10,8 @@ export const Placeholder = () => (
     flexDirection="column"
     sx={{
       width: '100%',
-      height: { xs: 180, sm: 320 },
-      background: `repeating-linear-gradient(135deg, ${COLORS.GREY_BG}, ${COLORS.GREY_BG} 20px, #f5f5f5 20px, #f5f5f5 40px)`,
+      height: 200,
+      backgroundColor: COLORS.GREY_BG,
       color: COLORS.GREY_TEXT,
       borderRadius: 2,
     }}

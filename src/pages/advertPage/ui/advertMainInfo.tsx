@@ -4,31 +4,24 @@ import { ContactButtons } from './contactButtons';
 
 /**
  * Свойства для компонента AdvertMainInfo.
- * @property {string} title - Заголовок объявления
  * @property {number} [price] - Цена объявления
  * @property {string[]} phone - Список телефонов для связи
  */
 interface AdvertMainInfoProps {
-  title: string;
   price?: number;
   phone: string[];
 }
 
 /**
- * Компонент AdvertMainInfo отображает заголовок, цену и кнопки для связи.
+ * Компонент AdvertMainInfo отображает цену и кнопки для связи.
  * @param {AdvertMainInfoProps} props - Свойства компонента
  * @returns {JSX.Element} Элемент с основной информацией объявления и кнопками связи
  */
-export const AdvertMainInfo: React.FC<AdvertMainInfoProps> = ({ title, price, phone }) => (
+export const AdvertMainInfo: React.FC<AdvertMainInfoProps> = ({ price, phone }) => (
   <Box>
-    <Typography fontSize={20} fontWeight={700}>
-      {title}
+    <Typography variant="h4" fontWeight={700}>
+      {price ? `${price.toLocaleString('ru-RU')} ₽` : 'Цена не указана'}
     </Typography>
-    {price && (
-      <Typography fontSize={18} fontWeight={600} color="primary">
-        {price.toLocaleString()} ₽
-      </Typography>
-    )}
     <Box display="flex" gap={1} mt={1}>
       <ContactButtons phone={phone} />
     </Box>

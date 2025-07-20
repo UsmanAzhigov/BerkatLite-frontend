@@ -20,7 +20,6 @@ export interface SelectOption {
 
 export interface AdvertItems {
   id: string;
-  title: string;
   description: string;
   price: number;
   images: string[];
@@ -46,12 +45,10 @@ export interface Advert {
 }
 
 export interface InfoBlockProps {
-  title: string;
   price?: number;
   description: string;
 }
 
 export interface ImageBlockProps {
   image?: string[];
-  title: string;
 }

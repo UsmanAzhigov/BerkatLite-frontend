@@ -7,11 +7,10 @@ import { sliderSettings } from './sliderSettings';
 import { Thumbnail } from './Thumbnail';
 
 interface ImageGalleryProps {
-  images?: string[];
-  title: string;
+  images: string[];
 }
 
-export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => {
+export const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
   const [current, setCurrent] = useState(0);
   const sliderRef = useRef<Slider>(null);
   const isMobile = useMediaQuery('(max-width:600px)');
@@ -26,7 +25,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => 
                 key={img + idx}
                 component="img"
                 src={img}
-                alt={title}
+                alt=""
                 sx={{
                   width: '100%',
                   height: isMobile ? 180 : 320,
@@ -77,7 +76,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => 
               <Thumbnail
                 key={img + 'thumb' + idx}
                 src={img}
-                alt={title + ' thumbnail'}
+                alt=""
                 isActive={current === idx}
                 onClick={() => {
                   setCurrent(idx);
