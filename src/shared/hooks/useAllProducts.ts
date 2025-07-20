@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { axiosInstance } from '../lib/axios';
+import { useCityStore } from '../store/cityStore';
 import type { Advert, SortBy, SortOrder } from '../types';
 import type { AdvertItems } from '../types/advertisement.type';
 
@@ -43,6 +44,7 @@ export const useAllProducts = ({
 }: Params) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Advert | null>(null);
+  const { cities } = useCityStore();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -78,7 +80,10 @@ export const useAllProducts = ({
   }, [page, sortBy, sortOrder, city, priceFrom, priceTo, category, search]);
 
   return {
-    items: (products?.items as AdvertItems[]) || [],
+    items: ((products?.items as AdvertItems[]) || []).map((item) => ({
+      ...item,
+      city: cities.find((c) => c.value === item.cityId)?.label || null,
+    })),
     totalPages: products?.meta?.totalPages || 1,
     loading,
   };
