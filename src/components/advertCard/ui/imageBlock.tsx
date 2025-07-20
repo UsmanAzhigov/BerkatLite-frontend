@@ -16,13 +16,12 @@ export const ImageBlock = ({ image, title }: ImageBlockProps) =>
       alt={title}
       sx={{
         width: '100%',
-        height: { xs: 180, sm: 200 }, // ниже на мобилке, выше на десктопе
-        objectFit: 'contain',
+        height: 200,
+        objectFit: 'cover',
         display: 'block',
         backgroundColor: COLORS.GREY_BG,
         borderRadius: 2,
         maxWidth: '100%',
-        maxHeight: { xs: 180, sm: 200 },
         margin: '0 auto',
       }}
     />

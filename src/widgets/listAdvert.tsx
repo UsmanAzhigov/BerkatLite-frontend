@@ -1,4 +1,4 @@
-import { List, ListItem } from '@mui/material';
+import { Grid } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import type { FC } from 'react';
@@ -24,31 +24,30 @@ export const ListAd: FC<ListAdType> = ({ data }) => {
   const navigate = useNavigate();
 
   return (
-    <List>
+    <Grid container spacing={2}>
       <AnimatePresence>
         {data?.map((ad) => (
-          <ListItem
-            key={ad.id}
-            disablePadding
-            sx={{ mb: 2, cursor: 'pointer' }}
-            onClick={() => navigate(`/ad/${ad.id}`)}
-            component={motion.li}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.4, type: 'spring', stiffness: 60 }}
-          >
-            <AdvertCard
-              image={ad.images}
-              title={ad.title}
-              price={ad.price}
-              description={ad.description}
-              city={ad.city}
-              date={ad.createdAt}
-            />
-          </ListItem>
+          <Grid size={{ xs: 6 }} key={ad.id} sx={{ display: 'flex' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 30 }}
+              transition={{ duration: 0.4, type: 'spring', stiffness: 60 }}
+              style={{ height: '100%', width: '100%', display: 'flex' }}
+            >
+              <AdvertCard
+                image={ad.images}
+                title={ad.title}
+                price={ad.price}
+                description={ad.description}
+                city={ad.city}
+                date={ad.createdAt}
+                onClick={() => navigate(`/ad/${ad.id}`)}
+              />
+            </motion.div>
+          </Grid>
         ))}
       </AnimatePresence>
-    </List>
+    </Grid>
   );
 };

@@ -42,6 +42,9 @@ export const AdvertCard = ({
     whileHover={{ scale: 1.005, boxShadow: `0px 4px 16px 4px ${COLORS.SHADOW_CARD}` }}
     transition={{ type: 'spring', stiffness: 200, damping: 15 }}
     sx={{
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
       width: '100%',
       borderRadius: '15px',
       position: 'relative',
