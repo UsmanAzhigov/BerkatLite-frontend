@@ -16,11 +16,12 @@ export const InfoBlock = ({
   const MAX_LENGTH = 30;
   const isLong = description.length > MAX_LENGTH;
   const shortDescription = isLong ? description.slice(0, MAX_LENGTH) + '...' : description;
+  const priceLabel = typeof price === 'number' && price > 1000 ? `${price} ₽` : 'Цена не указана';
 
   return (
     <>
       <Typography fontSize={16} mt={1} mb={1} fontWeight={700} color={COLORS.BLACK}>
-        {price ? `${price} ₽` : 'Цена не указана'}
+        {priceLabel}
       </Typography>
 
       <Typography fontSize={12} color="text.secondary" mb={5}>
