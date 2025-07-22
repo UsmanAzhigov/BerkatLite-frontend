@@ -22,7 +22,7 @@ export const AdvertMainInfo: React.FC<AdvertMainInfoProps> = ({ price, phone }) 
 
   return (
     <Box>
-      <Typography variant="h4" fontWeight={700}>
+      <Typography variant="h5" fontWeight={700}>
         {priceLabel}
       </Typography>
       <Box display="flex" gap={1} mt={1}>

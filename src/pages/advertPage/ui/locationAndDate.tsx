@@ -18,10 +18,10 @@ interface LocationAndDateProps {
  */
 export const LocationAndDate: React.FC<LocationAndDateProps> = ({ city, createdAt }) => (
   <Box display="flex" justifyContent="space-between" alignItems="center">
-    <Typography fontSize={13} color="text.secondary" fontWeight={500}>
+    <Typography fontSize={15} color="text.secondary" fontWeight={500}>
       {city}
     </Typography>
-    <Typography fontSize={13} color="text.secondary" fontWeight={500}>
+    <Typography fontSize={15} color="text.secondary" fontWeight={500}>
       {createdAt}
     </Typography>
   </Box>

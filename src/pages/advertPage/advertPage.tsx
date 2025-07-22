@@ -33,7 +33,6 @@ export const AdvertPage = () => {
       <Paper
         sx={{
           width: '100%',
-          minHeight: 'calc(100vh - 32px)',
           borderRadius: '15px',
           overflow: 'hidden',
           boxShadow: `0px 1px 4px 4px ${COLORS.SHADOW_LIGHT}`,

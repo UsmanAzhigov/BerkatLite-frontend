@@ -7,7 +7,7 @@ import { Button } from '../../../shared/ui';
  * @property {string[]} phone - Список телефонов для связи
  */
 interface ContactButtonsProps {
-  phone: string[];
+  phone: string;
 }
 
 /**
@@ -19,7 +19,7 @@ export const ContactButtons: React.FC<ContactButtonsProps> = ({ phone }) => (
   <>
     <Button
       sx={{ backgroundColor: COLORS.GREEN_WHATSAPP }}
-      onClick={() => window.open(`https://wa.me/${phone[0].replace(/\D/g, '')}`, '_blank')}
+      onClick={() => window.open(`https://wa.me/${phone.replace(/\D/g, '')}`, '_blank')}
     >
       Написать
     </Button>
