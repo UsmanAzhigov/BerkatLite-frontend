@@ -41,8 +41,8 @@ export const AdvertPage = () => {
         }}
       >
         <ImageGallery images={advert.images} />
-        <Box sx={{ p: '0px 16px 16px 16px', display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <AdvertMainInfo price={advert.price} phone={advert.phone} />
+        <Box sx={{ p: '16px', display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <AdvertMainInfo price={advert.price} phone={advert.phone} title={advert.title} />
           <LocationAndDate city={advert.city} createdAt={advert.createdAt} />
           <Divider />
           <DescriptionAndProperties

@@ -8,6 +8,7 @@ import { useCategoryStore } from '../shared/store/categoryStore';
 import { useCityStore } from '../shared/store/cityStore';
 import { useFilterStore } from '../shared/store/filterStore';
 import { SortOrder } from '../shared/types/defaultFields.type';
+import type { FilterMenuProps } from '../shared/types/filterMenu.type';
 import { Button } from '../shared/ui';
 import { FilterMenu } from '../shared/ui/filterMenu/filterMenu';
 import { getFilterOptions } from '../shared/ui/filterMenu/filterOptions';
@@ -53,7 +54,7 @@ export const SettingsBlock = () => {
           anchorEl={filterAnchorEl}
           open={Boolean(filterAnchorEl)}
           onClose={() => setFilterAnchorEl(null)}
-          filters={filterOptions}
+          filters={filterOptions as FilterMenuProps['filters']}
           values={filterValues}
           onChange={handleFilterChangeAdapter}
           onReset={handleResetFilters}

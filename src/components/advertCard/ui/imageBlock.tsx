@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { Placeholder } from '../../../pages/advertPage/ui/imageGallery/Placeholder';
+import { Placeholder } from '../../../pages/advertPage/ui/imageGallery/placeholder';
 import { COLORS } from '../../../shared/constants';
 import type { ImageBlockProps } from '../../../shared/types/advertisement.type';
 

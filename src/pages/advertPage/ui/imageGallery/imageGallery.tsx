@@ -2,9 +2,9 @@ import { Box, useMediaQuery } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { COLORS } from '../../../../shared/constants';
-import { Placeholder } from './Placeholder';
+import { Placeholder } from './placeholder';
 import { sliderSettings } from './sliderSettings';
-import { Thumbnail } from './Thumbnail';
+import { Thumbnail } from './thumbnail';
 
 interface ImageGalleryProps {
   images: string[];

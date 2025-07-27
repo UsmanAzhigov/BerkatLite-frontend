@@ -1,3 +1,3 @@
-export { FooterBlock } from './FooterBlock';
-export { ImageBlock } from './ImageBlock';
-export { InfoBlock } from './InfoBlock';
+export { FooterBlock } from './footerBlock';
+export { ImageBlock } from './imageBlock';
+export { InfoBlock } from './infoBlock';

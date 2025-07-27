@@ -20,6 +20,7 @@ export interface SelectOption {
 
 export interface AdvertItems {
   id: string;
+  title: string;
   description: string;
   price: number;
   images: string[];
@@ -27,7 +28,7 @@ export interface AdvertItems {
   views: number;
   city: string | null;
   cityId?: string;
-  phone: string[];
+  phone: string;
   properties: Property[];
   createdAt: string;
 }

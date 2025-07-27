@@ -5,11 +5,12 @@ import { ContactButtons } from './contactButtons';
 /**
  * Свойства для компонента AdvertMainInfo.
  * @property {number} [price] - Цена объявления
- * @property {string[]} phone - Список телефонов для связи
+ * @property {string} phone - Список телефонов для связи
  */
 interface AdvertMainInfoProps {
+  title: string;
   price?: number;
-  phone: string[];
+  phone: string;
 }
 
 /**
@@ -17,11 +18,14 @@ interface AdvertMainInfoProps {
  * @param {AdvertMainInfoProps} props - Свойства компонента
  * @returns {JSX.Element} Элемент с основной информацией объявления и кнопками связи
  */
-export const AdvertMainInfo: React.FC<AdvertMainInfoProps> = ({ price, phone }) => {
+export const AdvertMainInfo: React.FC<AdvertMainInfoProps> = ({ title, price, phone }) => {
   const priceLabel = typeof price === 'number' && price > 1000 ? `${price} ₽` : 'Цена не указана';
 
   return (
     <Box>
+      <Typography fontSize={18} fontWeight={500}>
+        {title}
+      </Typography>
       <Typography variant="h5" fontWeight={700}>
         {priceLabel}
       </Typography>
