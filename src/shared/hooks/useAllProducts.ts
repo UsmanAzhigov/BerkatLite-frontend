@@ -76,6 +76,7 @@ export const useAllProducts = ({
         setLoading(false);
       }
     };
+    fetchProducts();
 
     intervalId = setInterval(fetchProducts, 10000);
 
