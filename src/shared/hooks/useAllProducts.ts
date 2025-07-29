@@ -78,7 +78,7 @@ export const useAllProducts = ({
     };
     fetchProducts();
 
-    intervalId = setInterval(fetchProducts, 10000);
+    intervalId = setInterval(fetchProducts, 20000);
 
     return () => clearInterval(intervalId);
   }, [page, sortBy, sortOrder, city, priceFrom, priceTo, category, search]);
