@@ -18,4 +18,6 @@ export const COLORS = {
   SHADOW_LIGHT: 'rgba(0,0,0,0.1)',
   SHADOW_CARD: 'rgba(0,0,0,0.13)',
   SEARCH_ICON: '#D5D5D5',
+  GREY_BORDER_CARD: '#cecece',
+  GREY_BG_CARD: '#e5e5e5',
 };

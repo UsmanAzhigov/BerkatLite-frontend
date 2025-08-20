@@ -1,6 +1,7 @@
 import { Box, CssBaseline } from '@mui/material';
 import React from 'react';
 
+import { useLocation } from 'react-router-dom';
 import { Header } from '../components';
 
 /**
@@ -11,18 +12,12 @@ import { Header } from '../components';
  */
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
+  const location = useLocation();
   return (
     <>
       <CssBaseline />
-      <Header />
-      <Box
-        component="main"
-        sx={{
-          p: '13px 10px',
-        }}
-      >
-        {children}
-      </Box>
+      {location.pathname !== '/filters' && <Header />}
+      <Box component="main">{children}</Box>
     </>
   );
 };

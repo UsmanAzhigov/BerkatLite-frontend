@@ -1,6 +1,7 @@
-import { Paper, Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import { motion } from 'framer-motion';
-import { FooterBlock, ImageBlock, InfoBlock } from './ui';
+import { COLORS } from '../../shared/constants';
+import { ImageBlock, InfoBlock } from './ui';
 
 /**
  * Свойства для компонента карточки объявления.
@@ -15,8 +16,6 @@ export interface AdCardProps {
   image?: string[];
   price?: number;
   description: string;
-  city: string;
-  date: string;
   onClick?: () => void;
 }
 
@@ -25,8 +24,8 @@ export interface AdCardProps {
  * @param {AdCardProps} props - Свойства компонента
  * @returns {JSX.Element} Стилизованная карточка объявления
  */
-export const AdvertCard = ({ image, price, description, city, date, onClick }: AdCardProps) => (
-  <Paper
+export const AdvertCard = ({ image, price, description, onClick }: AdCardProps) => (
+  <Box
     component={motion.div}
     transition={{ type: 'spring', stiffness: 200, damping: 15 }}
     sx={{
@@ -37,14 +36,15 @@ export const AdvertCard = ({ image, price, description, city, date, onClick }: A
       borderRadius: '15px',
       position: 'relative',
       cursor: onClick ? 'pointer' : 'default',
+      border: `1px solid ${COLORS.GREY_BORDER_CARD}`,
       overflow: 'hidden',
     }}
     onClick={onClick}
   >
     <ImageBlock image={image} />
+
     <Stack sx={{ p: '0px  17px 17px 17px' }}>
       <InfoBlock price={price} description={description} />
-      <FooterBlock city={city} date={date} />
     </Stack>
-  </Paper>
+  </Box>
 );

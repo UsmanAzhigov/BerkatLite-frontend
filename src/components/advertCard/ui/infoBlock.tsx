@@ -1,4 +1,4 @@
-import { Link, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import { COLORS } from '../../../shared/constants';
 import type { InfoBlockProps } from '../../../shared/types/advertisement.type';
 
@@ -11,34 +11,45 @@ import type { InfoBlockProps } from '../../../shared/types/advertisement.type';
 export const InfoBlock = ({
   price,
   description,
-  onShowMore,
 }: Omit<InfoBlockProps, 'title'> & { onShowMore?: () => void }) => {
-  const MAX_LENGTH = 30;
+  const MAX_LENGTH = 60;
   const isLong = description.length > MAX_LENGTH;
   const shortDescription = isLong ? description.slice(0, MAX_LENGTH) + '...' : description;
   const priceLabel = typeof price === 'number' && price > 1000 ? `${price} ₽` : 'Цена не указана';
 
   return (
-    <>
-      <Typography fontSize={16} mt={1} mb={1} fontWeight={700} color={COLORS.BLACK}>
-        {priceLabel}
+    <Box display="flex" justifyContent="space-between" mt={2} alignItems="flex-start">
+      <Typography
+        fontSize={13}
+        fontWeight={400}
+        color="#181717"
+        sx={{
+          width: '56%',
+          WebkitLineClamp: 7,
+          WebkitBoxOrient: 'vertical',
+          textOverflow: 'ellipsis',
+        }}
+      >
+        {shortDescription}
       </Typography>
 
-      <Typography fontSize={12} color="text.secondary" mb={5}>
-        {shortDescription}
-        {isLong && (
-          <>
-            {'\u00A0'}
-            <Link
-              component="button"
-              onClick={onShowMore}
-              sx={{ display: 'inline', verticalAlign: 'baseline', p: 0, fontSize: 12 }}
-            >
-              Подробнее
-            </Link>
-          </>
-        )}
-      </Typography>
-    </>
+      <Stack display="flex" gap={1} alignItems="flex-end">
+        <Typography fontSize={18} fontWeight={700} color={COLORS.BLACK}>
+          {priceLabel}
+        </Typography>
+        <Button
+          size="small"
+          variant="contained"
+          sx={{
+            width: '140px',
+            backgroundColor: '#37AFFF',
+            borderRadius: 2,
+            color: COLORS.WHITE,
+          }}
+        >
+          Перейти
+        </Button>
+      </Stack>
+    </Box>
   );
 };

@@ -1,15 +1,10 @@
-import { Box, Divider, Paper, Typography } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.css';
-
 import { COLORS } from '../../shared/constants';
 import { useAdvert } from '../../shared/hooks/useAdvert';
-
-import { Button } from '../../shared/ui';
 import { AdvertMainInfo, DescriptionAndProperties, ImageGallery, LocationAndDate } from './ui';
 
 export const AdvertPage = () => {
@@ -26,22 +21,31 @@ export const AdvertPage = () => {
   }
 
   return (
-    <>
-      <Button fullWidth={false} onClick={() => navigate(-1)} variant="outlined" sx={{ mb: 2 }}>
-        ← Назад
-      </Button>
-      <Paper
+    <Box display="flex" flexDirection="column" padding="0 8px">
+      <Typography
+        display="flex"
+        alignItems="center"
+        onClick={() => navigate(-1)}
+        fontWeight={700}
+        my={2}
+        sx={{
+          color: COLORS.BLUE,
+        }}
+      >
+        <KeyboardBackspaceIcon sx={{ color: COLORS.BLUE, mr: 1 }} />
+        Вернуться назад
+      </Typography>
+      <Box
         sx={{
           width: '100%',
           borderRadius: '15px',
           overflow: 'hidden',
-          boxShadow: `0px 1px 4px 4px ${COLORS.SHADOW_LIGHT}`,
           display: 'flex',
           flexDirection: 'column',
         }}
       >
         <ImageGallery images={advert.images} />
-        <Box sx={{ p: '16px', display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box sx={{ pt: '16px', display: 'flex', flexDirection: 'column', gap: 2 }}>
           <AdvertMainInfo price={advert.price} phone={advert.phone} title={advert.title} />
           <LocationAndDate city={advert.city} createdAt={advert.createdAt} />
           <Divider />
@@ -50,7 +54,7 @@ export const AdvertPage = () => {
             properties={advert.properties}
           />
         </Box>
-      </Paper>
-    </>
+      </Box>
+    </Box>
   );
 };

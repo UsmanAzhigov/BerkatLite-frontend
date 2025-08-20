@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { ContactButtons } from './contactButtons';
 
@@ -23,13 +23,15 @@ export const AdvertMainInfo: React.FC<AdvertMainInfoProps> = ({ title, price, ph
 
   return (
     <Box>
-      <Typography fontSize={18} fontWeight={500}>
-        {title}
-      </Typography>
-      <Typography variant="h5" fontWeight={700}>
-        {priceLabel}
-      </Typography>
-      <Box display="flex" gap={1} mt={1}>
+      <Stack display="flex" flexDirection="column" gap={2}>
+        <Typography variant="h5" fontWeight={700}>
+          {priceLabel}
+        </Typography>
+        <Typography fontSize={16} fontWeight={400}>
+          {title}
+        </Typography>
+      </Stack>
+      <Box gap={1} mt={1}>
         <ContactButtons phone={phone} />
       </Box>
     </Box>

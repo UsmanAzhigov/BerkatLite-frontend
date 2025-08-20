@@ -24,12 +24,9 @@ export const DescriptionAndProperties: React.FC<DescriptionAndPropertiesProps> =
 }) => (
   <Box display="flex" flexDirection={{ xs: 'column', md: 'row' }} gap={3}>
     <Box flex={1}>
-      <Typography fontSize={15} color="text.primary">
-        {description}
+      <Typography variant="h5" mb={2.5} fontWeight={700}>
+        Характеристики
       </Typography>
-    </Box>
-    <Box bgcolor="grey.300" width="1px" display={{ xs: 'none', md: 'block' }} />
-    <Box flex={1}>
       {properties.map((prop, idx) => (
         <Stack key={idx} flexDirection="row" gap={1}>
           <Typography fontSize={15} mb={0.5} color="text.secondary">
@@ -40,6 +37,14 @@ export const DescriptionAndProperties: React.FC<DescriptionAndPropertiesProps> =
           </Typography>
         </Stack>
       ))}
+    </Box>
+    <Box flex={1}>
+      <Typography variant="h5" mb={2.5} fontWeight={700}>
+        Описание
+      </Typography>
+      <Typography fontSize={15} color="text.primary">
+        {description}
+      </Typography>
     </Box>
   </Box>
 );

@@ -1,8 +1,8 @@
-import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import React from 'react';
-
 import { COLORS } from '../../constants';
 import { SizeSearch, VarianSearch } from './inputSearch.type';
 
@@ -22,13 +22,11 @@ export const InputSearch: React.FC<React.ComponentProps<typeof TextField>> = (pr
       value={props.value}
       onChange={props.onChange}
       InputProps={{
-        startAdornment: (
-          <InputAdornment position="start">
-            <SearchIcon
-              sx={{
-                color: COLORS.SEARCH_ICON,
-              }}
-            />
+        endAdornment: (
+          <InputAdornment position="end">
+            <IconButton edge="end" onClick={props.onFilterPage}>
+              <FilterListIcon sx={{ color: COLORS.BLACK }} />
+            </IconButton>
           </InputAdornment>
         ),
         ...props.InputProps,
@@ -36,11 +34,15 @@ export const InputSearch: React.FC<React.ComponentProps<typeof TextField>> = (pr
       sx={{
         '& .MuiOutlinedInput-root': {
           borderRadius: '10px',
-          border: `0px solid ${COLORS.SEARCH_ICON} `,
+          backgroundColor: COLORS.GREY_BG,
         },
         '& .MuiOutlinedInput-placeholder': {
           color: COLORS.SEARCH_ICON,
         },
+        '& .MuiOutlinedInput-notchedOutline': {
+          border: 'none',
+        },
+        fontSize: 11,
         ...props.sx,
       }}
       {...props}

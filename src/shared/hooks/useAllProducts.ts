@@ -53,7 +53,7 @@ export const useAllProducts = ({
       try {
         const params: Record<string, string | number | boolean | null | undefined> = {
           page,
-          sortBy,
+          sortBy: sortBy || '',
           sortOrder,
           cityId: city || undefined,
           categoryId: category || undefined,

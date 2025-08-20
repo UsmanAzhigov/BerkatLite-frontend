@@ -1,48 +1,48 @@
-import { SwapVert, TuneOutlined } from '@mui/icons-material';
-import { Box, Stack } from '@mui/material';
-import { useState } from 'react';
+// import { SwapVert, TuneOutlined } from '@mui/icons-material';
+import {  Stack } from '@mui/material';
+// import { useState } from 'react';
 
-import { useFilterHandlers } from '../shared/hooks/useFilterHandlers';
-import { getFilterValues } from '../shared/lib/getFilterValues';
-import { useCategoryStore } from '../shared/store/categoryStore';
-import { useCityStore } from '../shared/store/cityStore';
-import { useFilterStore } from '../shared/store/filterStore';
-import { SortOrder } from '../shared/types/defaultFields.type';
-import type { FilterMenuProps } from '../shared/types/filterMenu.type';
-import { Button } from '../shared/ui';
-import { FilterMenu } from '../shared/ui/filterMenu/filterMenu';
-import { getFilterOptions } from '../shared/ui/filterMenu/filterOptions';
-import { SortMenu } from '../shared/ui/sortMenu/sortMenu';
+// import { useFilterHandlers } from '../shared/hooks/useFilterHandlers';
+// import { getFilterValues } from '../shared/lib/getFilterValues';
+// import { useCategoryStore } from '../shared/store/categoryStore';
+// import { useCityStore } from '../shared/store/cityStore';
+// import { useFilterStore } from '../shared/store/filterStore';
+// import { SortOrder } from '../shared/types/defaultFields.type';
+// import type { FilterMenuProps } from '../shared/types/filterMenu.type';
+// import { Button } from '../shared/ui';
+// import { FilterMenu } from '../shared/ui/filterMenu/filterMenu';
+// import { getFilterOptions } from '../shared/ui/filterMenu/filterOptions';
+// import { SortMenu } from '../shared/ui/sortMenu/sortMenu';
 
 /**
  * Компонент SettingsBlock отображает фильтры и сортировку для списка объявлений
  * @returns {JSX.Element} Блок фильтров и сортировки
  */
 export const SettingsBlock = () => {
-  const [sortAnchorEl, setSortAnchorEl] = useState<null | HTMLElement>(null);
-  const [filterAnchorEl, setFilterAnchorEl] = useState<null | HTMLElement>(null);
-  const { category, city, priceFrom, priceTo, sortBy, sortOrder, setField, resetFilters } =
-    useFilterStore();
+  // const [sortAnchorEl, setSortAnchorEl] = useState<null | HTMLElement>(null);
+  // const [filterAnchorEl, setFilterAnchorEl] = useState<null | HTMLElement>(null);
+  // const { category, city, priceFrom, priceTo, sortBy, sortOrder, setField, resetFilters } =
+  //   useFilterStore();
 
-  const { cities } = useCityStore();
-  const { categories } = useCategoryStore();
-  const filterOptions = getFilterOptions(cities, categories);
-  const filterValues = getFilterValues(category, city, priceFrom, priceTo);
+  // const { cities } = useCityStore();
+  // const { categories } = useCategoryStore();
+  // const filterOptions = getFilterOptions(cities, categories);
+  // const filterValues = getFilterValues(category, city, priceFrom, priceTo);
 
-  const { handleFilterChange, handleResetFilters, handleSortChange } = useFilterHandlers(
-    setField,
-    resetFilters,
-    setFilterAnchorEl,
-    setSortAnchorEl,
-  );
+  // const { handleFilterChange, handleResetFilters, handleSortChange } = useFilterHandlers(
+  //   setField,
+  //   resetFilters,
+  //   setFilterAnchorEl,
+  //   setSortAnchorEl,
+  // );
 
-  const handleFilterChangeAdapter = (key: string, value: string) => {
-    handleFilterChange(key as keyof typeof filterValues, value);
-  };
+  // const handleFilterChangeAdapter = (key: string, value: string) => {
+  //   handleFilterChange(key as keyof typeof filterValues, value);
+  // };
 
   return (
     <Stack flexDirection="row" alignItems="center" justifyContent="space-between" gap={2}>
-      <Box width="100%">
+      {/* <Box width="100%">
         <Button
           fullWidth
           endIcon={<TuneOutlined />}
@@ -83,7 +83,7 @@ export const SettingsBlock = () => {
           sortOrder={sortOrder}
           onChange={handleSortChange}
         />
-      </Box>
+      </Box> */}
     </Stack>
   );
 };
