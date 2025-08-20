@@ -11,7 +11,12 @@ import { SizeSearch, VarianSearch } from './inputSearch.type';
  * @param {React.ComponentProps<typeof TextField>} props - Свойства компонента
  * @returns {JSX.Element} Поле поиска
  */
-export const InputSearch: React.FC<React.ComponentProps<typeof TextField>> = (props) => {
+
+interface InputSearchProps extends React.ComponentProps<typeof TextField> {
+  onFilterPage?: () => void;
+}
+
+export const InputSearch: React.FC<InputSearchProps> = (props) => {
   return (
     <TextField
       type={props.type}
